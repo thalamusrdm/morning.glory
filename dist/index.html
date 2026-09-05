@@ -19,6 +19,12 @@
     .brand-logo{width:118px;height:48px;object-fit:contain;object-position:center;display:block}
     nav{display:flex;gap:22px;font-size:15px;font-weight:700}
     nav a{text-decoration:none;opacity:.7} nav a:hover{opacity:1;color:var(--wine)}
+    .top-actions{display:flex;align-items:center;gap:18px}
+    .sound-toggle{position:relative;display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:7px 11px;border:1px solid rgba(117,97,77,.34);background:rgba(255,254,250,.75);color:#51483f;cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.06em;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+    .sound-toggle:hover,.sound-toggle:focus-visible{background:#f2e6d3;border-color:#8f7458;transform:translateY(-1px)}.sound-toggle:focus-visible{outline:2px solid #ad8a5f;outline-offset:3px}
+    .sound-icon{position:relative;width:22px;height:18px;display:flex;align-items:center;justify-content:center;gap:2px}.sound-icon i{display:block;width:2px;border-radius:2px;background:currentColor;animation:sound-wave 1.15s ease-in-out infinite}.sound-icon i:nth-child(1),.sound-icon i:nth-child(5){height:5px}.sound-icon i:nth-child(2),.sound-icon i:nth-child(4){height:11px;animation-delay:-.35s}.sound-icon i:nth-child(3){height:17px;animation-delay:-.7s}
+    .sound-toggle[aria-pressed="false"] .sound-icon i{height:2px;animation:none}.sound-toggle.needs-gesture:after{content:"";position:absolute;inset:-4px;border:1px solid rgba(173,138,95,.7);pointer-events:none;animation:sound-invite 1.8s ease-out infinite}
+    @keyframes sound-wave{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}@keyframes sound-invite{0%{opacity:.85;transform:scale(.96)}100%{opacity:0;transform:scale(1.16)}}
     section[id]{scroll-margin-top:72px}
     .chapter{border-top:1px solid rgba(117,97,77,.22)}
     .chapter-mark{position:absolute;z-index:8;top:24px;right:clamp(20px,6vw,88px);left:clamp(20px,6vw,88px);display:flex;align-items:center;gap:13px;color:#5f5144;font-size:12px;font-weight:800;letter-spacing:.16em;direction:ltr}
@@ -98,7 +104,7 @@
       .section{position:relative}.base,.role,.op{backface-visibility:hidden}
     }
     @media(max-width:600px){
-      body{font-size:16px}.topbar{min-height:58px;padding:6px 12px}.brand-logo{width:96px;height:40px}.stamp{padding:6px 10px;font-size:12px}
+      body{font-size:16px}.topbar{min-height:58px;padding:6px 12px}.brand-logo{width:96px;height:40px}.top-actions{gap:8px}.top-actions>.stamp{display:none}.sound-toggle{width:42px;min-height:42px;padding:7px;justify-content:center}.sound-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.stamp{padding:6px 10px;font-size:12px}
       .hero{min-height:auto;padding:58px 18px 42px;background-position:61% center}.hero:after{inset:8px}.logo-scroll-scene{position:relative;display:block;width:100%;height:72svh;min-height:540px}.logo-stage{position:sticky;top:16svh;width:min(88vw,390px);margin:0 auto;z-index:3}.hero h1{font-size:clamp(49px,15vw,66px)}.hero-card{width:100%;margin-top:30px;padding:24px;transform:none}.kicker{font-size:12px}.kicker:before,.kicker:after{width:24px}
       .chapter-mark{top:14px;right:14px;left:14px}.chapter-mark span{width:32px;height:32px}
       .venue{display:flex;min-height:0;flex-direction:column;padding-bottom:46px;background:#f7f1e7;overflow:hidden}.venue>img{order:1;width:112%;height:68svh;min-height:510px;margin:0 -6%;object-position:center;flex:none}.venue-copy{position:relative;order:2;right:auto;left:auto;bottom:auto;margin:20px 14px 0;padding:25px 20px;background:#fffefa;backdrop-filter:none}.arrival{align-items:stretch;flex-direction:column;gap:14px;margin-top:19px;padding-top:17px}.waze-link{justify-content:center;min-height:58px;font-size:17px;box-shadow:0 12px 26px rgba(49,43,37,.2)}
@@ -124,15 +130,19 @@
       .logo-scroll-scene .logo-stage{position:relative;top:16svh;will-change:transform}
       .pancake-window{height:64svh;min-height:470px;flex:none}
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flavor,.journey-entry-button{transition:none}.journey-entry-button,.journey-entry-button:after{animation:none}.journey-entry-button:after{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flavor,.journey-entry-button{transition:none}.journey-entry-button,.journey-entry-button:after,.sound-icon i,.sound-toggle.needs-gesture:after{animation:none}.journey-entry-button:after,.sound-toggle.needs-gesture:after{display:none}}
   </style>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#top"><img class="brand-logo" src="assets/morning-glory-logo.svg" alt="Morning Glory" /></a>
     <nav aria-label="ניווט ראשי"><a href="#venue">המקום</a><a href="#journey">החוויה</a><a href="#music">המוזיקה</a><a href="#menu">התפריט</a><a href="#roles">הצוות</a><a href="https://ul.waze.com/ul?venue_id=23003444.229772298.2120141&amp;overview=yes&amp;utm_campaign=default&amp;utm_source=waze_website&amp;utm_medium=lm_share_location" target="_blank" rel="noopener noreferrer">Waze</a></nav>
-    <span class="stamp">DOSSIER 01</span>
+    <div class="top-actions">
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="הפעלת סאונד האווירה"><span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="sound-label">סאונד</span></button>
+      <span class="stamp">DOSSIER 01</span>
+    </div>
   </header>
+  <audio id="ambientAudio" loop preload="auto" playsinline src="assets/ambient-french-outdoor.mp3"></audio>
 
   <main id="top">
     <section class="hero">
@@ -305,6 +315,60 @@
   <footer><div><div class="footer-brand">MORNING GLORY</div><span>French café concept · édition expérimentale</span></div><span class="stamp">APPROUVÉ PAR PERSONNE</span></footer>
 
   <script>
+    const ambientAudio = document.getElementById('ambientAudio');
+    const soundToggle = document.getElementById('soundToggle');
+    const soundscape = {
+      enabled: localStorage.getItem('morning-glory-sound') !== 'off',
+      targetVolume: .28,
+      fadeFrame: 0,
+      fadeTo(target, duration = 1200) {
+        cancelAnimationFrame(this.fadeFrame);
+        const start = ambientAudio.volume;
+        const startedAt = performance.now();
+        const step = now => {
+          const progress = Math.min(1, (now - startedAt) / duration);
+          ambientAudio.volume = start + (target - start) * (progress * (2 - progress));
+          if (progress < 1) this.fadeFrame = requestAnimationFrame(step);
+        };
+        this.fadeFrame = requestAnimationFrame(step);
+      },
+      updateControl(waiting = false) {
+        const playing = this.enabled && !ambientAudio.paused;
+        soundToggle.setAttribute('aria-pressed', String(playing));
+        soundToggle.setAttribute('aria-label', playing ? 'כיבוי סאונד האווירה' : 'הפעלת סאונד האווירה');
+        soundToggle.classList.toggle('needs-gesture', waiting && this.enabled);
+      },
+      async start() {
+        if (!this.enabled) return this.updateControl();
+        try {
+          ambientAudio.volume = 0;
+          await ambientAudio.play();
+          this.fadeTo(this.targetVolume, 1600);
+          this.updateControl();
+        } catch (error) {
+          this.updateControl(true);
+        }
+      },
+      stop() {
+        this.enabled = false;
+        localStorage.setItem('morning-glory-sound', 'off');
+        ambientAudio.pause();
+        this.updateControl();
+      }
+    };
+    soundToggle.addEventListener('click', () => {
+      if (!ambientAudio.paused) return soundscape.stop();
+      soundscape.enabled = true;
+      localStorage.setItem('morning-glory-sound', 'on');
+      soundscape.start();
+    });
+    const unlockSound = event => {
+      if (soundToggle.contains(event.target)) return;
+      if (soundscape.enabled && ambientAudio.paused) soundscape.start();
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName => document.addEventListener(eventName, unlockSound, { once: true, passive: true }));
+    soundscape.start();
+
     const flavors = document.querySelectorAll('.flavor');
     flavors.forEach(card => card.addEventListener('click', () => {
       const willOpen = !card.classList.contains('selected');
