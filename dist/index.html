@@ -111,7 +111,20 @@
       footer{align-items:flex-start;flex-direction:column}
     }
     @media(max-width:380px){.hero h1{font-size:50px}.journey-entry-copy h2{font-size:40px}.journey-route{font-size:11px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flavor,.journey-entry-button{transition:none}}
+    .journey-entry-button{position:relative;overflow:hidden;isolation:isolate;animation:invitation-breathe 4.6s ease-in-out infinite}
+    .journey-entry-button:after{content:"";position:absolute;inset:-50% auto -50% -65%;width:40%;background:linear-gradient(90deg,transparent,rgba(255,230,185,.32),transparent);transform:skewX(-18deg);pointer-events:none;animation:invitation-shine 4.6s ease-in-out infinite}
+    .journey-entry-button:hover,.journey-entry-button:focus-visible{animation:none}
+    .journey-entry-button:focus-visible{outline:3px solid #ad8a5f;outline-offset:5px}
+    @keyframes invitation-breathe{0%,65%,100%{scale:1}32%{scale:1.018}}
+    @keyframes invitation-shine{0%,55%{left:-65%}85%,100%{left:145%}}
+    .venue>img[data-scroll-pan]{width:100%;margin:0;object-position:0% 50%;transform:none}
+    .pancake-window{height:100%;min-height:0;overflow:hidden}
+    .gallery .pancake-window img{width:100%;height:100%;margin:0;min-height:0;object-position:62% 50%;transform-origin:62% 50%}
+    @media(max-width:600px){
+      .logo-scroll-scene .logo-stage{position:relative;top:16svh;will-change:transform}
+      .pancake-window{height:64svh;min-height:470px;flex:none}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flavor,.journey-entry-button{transition:none}.journey-entry-button,.journey-entry-button:after{animation:none}.journey-entry-button:after{display:none}}
   </style>
 </head>
 <body>
@@ -145,7 +158,7 @@
 
     <section class="venue chapter" id="venue">
       <div class="chapter-mark light" aria-hidden="true"><span>01</span><b>LE LIEU</b></div>
-      <img class="reveal-media" data-scroll-media data-scroll-frame="venue" data-scroll-x="0" data-scroll-y="-68" data-scroll-scale="1.12" src="assets/venue-reference.webp" alt="מתחם Morning Glory באירוע מדברי בגווני בז׳ ולבן" />
+      <img class="reveal-media" data-scroll-media data-scroll-pan src="assets/venue-reference.webp" alt="מתחם Morning Glory באירוע מדברי בגווני בז׳ ולבן" />
       <div class="venue-copy">
         <span class="eyebrow">LE LIEU</span>
         <h2>בית קפה צרפתי באמצע המדבר</h2>
@@ -160,7 +173,7 @@
     <section class="journey-entry chapter" id="journey">
       <div class="chapter-mark" aria-hidden="true"><span>02</span><b>LE PARCOURS</b></div>
       <div class="journey-entry-card">
-        <img data-scroll-media data-scroll-frame="journey-entry-card" data-scroll-x="-58" data-scroll-y="0" data-scroll-scale="1.1" src="assets/journey-hostess.webp" alt="המארחת מקבלת את פני האורחים בתחילת מסלול האירוח" />
+        <img data-scroll-media data-scroll-frame="journey-entry-card" data-scroll-x="-63.8" data-scroll-y="0" data-scroll-scale="1.1" src="assets/journey-hostess.webp" alt="המארחת מקבלת את פני האורחים בתחילת מסלול האירוח" />
         <div class="journey-entry-copy">
           <span class="eyebrow">THE INTERACTIVE EXPERIENCE</span>
           <h2>מוכנים לתת לצרפת להחליט?</h2>
@@ -179,7 +192,7 @@
         <p>מוזיקה, פנקייקים מוגזמים ומתחם שחי גם אחרי סיום ההגשה. זה הרגע שבו חוויית האוכל הופכת לרחבה.</p>
       </div>
       <div class="gallery">
-        <figure class="reveal-media"><img data-scroll-media data-scroll-x="20" data-scroll-y="-30" data-scroll-scale="1.08" src="assets/journey-chef.webp" alt="שף משוגע מגיש מגדל פנקייקים עם תוספות מפתיעות" /><figcaption>מטבח שהוא מופע חי<span>Les chefs sont prêts. Presque.</span></figcaption></figure>
+        <figure class="reveal-media"><div class="pancake-window"><img data-scroll-media data-scroll-zoom="2.15" src="assets/journey-chef.webp" alt="שף משוגע מגיש מגדל פנקייקים עם תוספות מפתיעות" /></div><figcaption>מטבח שהוא מופע חי<span>Les chefs sont prêts. Presque.</span></figcaption></figure>
         <figure class="reveal-media"><img data-scroll-media data-scroll-x="-28" data-scroll-y="18" data-scroll-scale="1.08" src="assets/chef-action.webp" alt="שף בפעולה במטבח הפנקייקים" /><figcaption>הטירוף קורה מול העיניים<span>Le spectacle est servi.</span></figcaption></figure>
         <figure class="reveal-media"><img data-scroll-media data-scroll-x="24" data-scroll-y="24" data-scroll-scale="1.08" src="assets/journey-cashier.webp" alt="לקוח מבולבל מול קופאי ותפריט בצרפתית" /><figcaption>רגע הבחירה העיוורת<span>Choisissez vite, monsieur.</span></figcaption></figure>
       </div>
@@ -316,16 +329,33 @@
     const logoEmblem = heroLogo?.querySelector('.logo-emblem');
     const logoWordmark = heroLogo?.querySelector('.logo-wordmark');
     const scrollMedia = [...document.querySelectorAll('[data-scroll-media]')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
     let scrollFrame = 0;
     const paintScroll = () => {
       scrollFrame = 0;
       const viewportHeight = Math.max(1, window.innerHeight);
       scrollMedia.forEach(media => {
+        if (reducedMotion.matches) {
+          media.style.transform = 'none';
+          if (media.hasAttribute('data-scroll-pan')) media.style.objectPosition = '50% 50%';
+          return;
+        }
         const frameName = media.dataset.scrollFrame;
-        const frame = frameName ? media.closest(`.${frameName}`) : media.parentElement;
+        const frame = media.hasAttribute('data-scroll-pan') ? media : frameName ? media.closest(`.${frameName}`) : media.parentElement;
         const rect = frame.getBoundingClientRect();
         if (rect.bottom < -viewportHeight || rect.top > viewportHeight * 2) return;
+        // Complete the reveal while the image is still visible, in either scroll direction.
+        const reveal = clamp((viewportHeight * .65 - rect.top) / rect.height, 0, 1);
+        if (media.hasAttribute('data-scroll-pan')) {
+          media.style.objectPosition = `${(reveal * 100).toFixed(2)}% 50%`;
+          return;
+        }
+        if (media.dataset.scrollZoom) {
+          const scale = 1 + (Number(media.dataset.scrollZoom) - 1) * reveal;
+          media.style.transform = `scale(${scale.toFixed(4)})`;
+          return;
+        }
         const progress = clamp((viewportHeight - rect.top) / (viewportHeight + rect.height), 0, 1);
         const centered = progress - .5;
         const x = centered * Number(media.dataset.scrollX || 0);
@@ -338,7 +368,11 @@
       const mobile = window.matchMedia('(max-width: 600px)').matches;
       const range = mobile ? Math.max(170, window.innerHeight * .34) : Math.max(240, window.innerHeight * .48);
       const scrollTop = document.scrollingElement?.scrollTop || window.pageYOffset || 0;
-      const progress = clamp(scrollTop / range, 0, 1);
+      const scene = heroLogo.parentElement;
+      // Follow the scroll until the logo reaches the kicker, leaving a clear gap.
+      const travel = mobile ? Math.max(0, scene.clientHeight - heroLogo.offsetTop - heroLogo.offsetHeight - 24) : 0;
+      heroLogo.style.transform = `translate3d(0,${reducedMotion.matches ? 0 : clamp(scrollTop, 0, travel).toFixed(2)}px,0)`;
+      const progress = reducedMotion.matches ? 0 : clamp(scrollTop / range, 0, 1);
       const expansion = mobile ? .38 : .3;
       const lift = 0;
       logoRays.style.transform = `translate3d(0,${(lift * progress).toFixed(2)}px,0) scale(${(1 + expansion * progress).toFixed(4)})`;
@@ -352,6 +386,8 @@
     const requestScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(paintScroll); };
     window.addEventListener('scroll', requestScroll, { passive: true });
     window.addEventListener('resize', requestScroll, { passive: true });
+    reducedMotion.addEventListener('change', requestScroll);
+    window.addEventListener('load', requestScroll, { once: true });
     requestScroll();
   </script>
 </body>
