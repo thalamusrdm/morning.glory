@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#e9decb" />
+  <meta name="description" content="Morning Glory — ספר קונספט אינטראקטיבי לבית קפה צרפתי מסתורי." />
+  <title>Morning Glory — French Café Concept</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&display=swap');
+    :root{--wine:#75614d;--wine2:#9b846c;--ink:#26221e;--cream:#eee5d7;--paper:#fffefa;--gold:#ad8a5f;--rose:#d7c5ad;--green:#66705c;--espresso:#312b25;--shadow:0 24px 70px rgba(57,47,37,.14)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;overflow-x:hidden;background:var(--cream);color:var(--ink);font-family:"Assistant",Arial,sans-serif;font-size:17px;line-height:1.55}
+    button,a{font:inherit}
+    a{color:inherit}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:11px clamp(20px,5vw,72px);background:rgba(255,254,250,.92);border-bottom:1px solid rgba(78,66,52,.13);backdrop-filter:blur(15px)}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:.04em}
+    .brand-logo{width:118px;height:48px;object-fit:contain;object-position:center;display:block}
+    nav{display:flex;gap:22px;font-size:15px;font-weight:700}
+    nav a{text-decoration:none;opacity:.7} nav a:hover{opacity:1;color:var(--wine)}
+    section[id]{scroll-margin-top:72px}
+    .chapter{border-top:1px solid rgba(117,97,77,.22)}
+    .chapter-mark{position:absolute;z-index:8;top:24px;right:clamp(20px,6vw,88px);left:clamp(20px,6vw,88px);display:flex;align-items:center;gap:13px;color:#5f5144;font-size:12px;font-weight:800;letter-spacing:.16em;direction:ltr}
+    .chapter-mark:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(117,97,77,.12),rgba(117,97,77,.62))}
+    .chapter-mark span{display:grid;place-items:center;width:36px;height:36px;border:1px solid #90775c;background:rgba(255,254,250,.9);font:600 18px "Cormorant Garamond",serif;letter-spacing:0}
+    .chapter-mark.light{color:#fff}.chapter-mark.light:after{background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.65))}.chapter-mark.light span{color:#2f2822;background:rgba(255,254,250,.94)}
+    .journey-entry{position:relative;padding:92px clamp(20px,6vw,88px) clamp(64px,8vw,100px);background:#f7f1e7}
+    .journey-entry-card{position:relative;min-height:min(76vh,760px);display:flex;align-items:flex-end;overflow:hidden;background:#29231e;box-shadow:var(--shadow)}
+    .journey-entry-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+    .journey-entry-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,24,19,.88),rgba(30,24,19,.1) 70%),linear-gradient(0deg,rgba(30,24,19,.55),transparent 55%)}
+    .journey-entry-copy{position:relative;z-index:1;width:min(650px,100%);margin:clamp(18px,4vw,48px);padding:clamp(26px,4vw,48px);background:rgba(255,254,250,.96);border:1px solid rgba(255,255,255,.58);box-shadow:0 24px 70px rgba(0,0,0,.24);backdrop-filter:blur(12px)}
+    .journey-entry-copy h2{font:600 clamp(44px,6vw,74px)/.92 "Cormorant Garamond",serif;margin:10px 0 16px}
+    .journey-entry-copy p{margin:0 0 20px;color:#61564d;font-size:18px}
+    .journey-route{display:flex;align-items:center;gap:10px;margin:0 0 24px;padding:13px 0;border-block:1px solid #d5c7b5;color:#75614d;font-size:13px;font-weight:800}.journey-route i{font-style:normal;color:#b59875}
+    .journey-entry-button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:62px;padding:16px 20px;background:#312b25;color:#fffefa;text-decoration:none;font-size:19px;font-weight:800;border:1px solid #312b25;box-shadow:0 13px 30px rgba(49,43,37,.25);transition:.22s ease}
+    .journey-entry-button b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#efd5a9;color:#312b25;font-size:20px;transition:transform .22s ease}
+    .journey-entry-button:hover,.journey-entry-button:focus-visible{background:#75614d;border-color:#75614d;transform:translateY(-3px);box-shadow:0 18px 38px rgba(49,43,37,.32)}.journey-entry-button:hover b{transform:translateX(-5px)}
+    .journey-entry-note{display:block;margin-top:10px;color:#75614d;font-size:13px;text-align:center}
+    .hero{min-height:calc(100svh - 70px);position:relative;display:grid;place-items:center;padding:clamp(92px,10vw,132px) clamp(20px,6vw,88px) clamp(64px,7vw,92px);overflow:hidden;background:linear-gradient(0deg,rgba(255,254,250,.96) 0%,rgba(247,240,229,.86) 58%,rgba(247,240,229,.58) 100%),url('assets/morning-glory-cafe.png') center/cover;color:var(--ink)}
+    .hero:after{content:"";position:absolute;inset:18px;border:1px solid rgba(117,97,77,.28);pointer-events:none}
+    .hero-copy{position:relative;z-index:1;width:min(100%,1000px);display:flex;flex-direction:column;align-items:center;text-align:center}
+    .logo-scroll-scene{display:contents}
+    .logo-stage{--ray-aura:0;position:relative;width:clamp(300px,38vw,570px);aspect-ratio:1368/946.666687;margin:0 auto clamp(6px,1vw,14px);isolation:isolate;transform-origin:center}
+    .logo-stage:before{content:"";position:absolute;z-index:-1;inset:19% 16% 9%;border-radius:50%;background:radial-gradient(circle,rgba(255,254,250,.88),rgba(255,254,250,0) 68%);filter:blur(12px);transform:scale(.9);opacity:.4}
+    .logo-stage:after{content:"";position:absolute;z-index:0;inset:-8% 2% 43%;pointer-events:none;background:radial-gradient(ellipse at 50% 78%,rgba(219,174,106,.58),rgba(239,207,156,.2) 34%,transparent 70%);filter:blur(16px);opacity:var(--ray-aura);transform:scale(1.08)}
+    .logo-layer{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;will-change:transform,opacity,filter;backface-visibility:hidden}
+    .logo-rays{-webkit-clip-path:inset(0 0 27% 0);clip-path:inset(0 0 27% 0);transform:translateZ(0);transform-origin:50% 68%;opacity:1;filter:drop-shadow(0 0 3px rgba(190,139,72,.16))}
+    .logo-emblem{-webkit-clip-path:inset(36% 17% 24% 17%);clip-path:inset(36% 17% 24% 17%);transform:translateZ(0)}
+    .logo-wordmark{-webkit-clip-path:inset(62% 0 0 0);clip-path:inset(62% 0 0 0);transform:translateZ(0)}
+    .kicker{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--wine);font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.kicker:before,.kicker:after{content:"";width:44px;height:1px;background:currentColor}
+    h1,h2,h3{margin-top:0}
+    h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(56px,7.3vw,108px);line-height:.8;letter-spacing:-.04em;margin:25px 0 22px;direction:ltr;text-align:center}
+    h1 i{display:block;font-size:.34em;font-weight:500;color:var(--wine);letter-spacing:.02em;margin-top:25px}
+    .hero-copy>p{font-size:clamp(18px,1.7vw,22px);max-width:680px;color:#5c5148;margin:0}
+    .hero-card{position:absolute;z-index:2;right:clamp(26px,4vw,64px);bottom:clamp(26px,4vw,58px);width:min(28vw,320px);padding:26px;background:rgba(255,250,240,.92);color:var(--ink);box-shadow:0 18px 50px rgba(57,47,37,.13);transform:rotate(1deg);backdrop-filter:blur(10px)}
+    .hero-card:before{content:"CARTE SECRÈTE";position:absolute;top:28px;left:22px;padding:4px 10px;border:2px solid var(--wine);color:var(--wine);font-weight:800;font-size:12px;letter-spacing:.14em;transform:rotate(-8deg);opacity:.76}
+    .hero-card .num{font:600 86px/1 "Cormorant Garamond",serif;color:var(--wine)}
+    .hero-card p{margin:4px 0 18px}.hero-card small{display:block;border-top:1px dashed #b8aa98;padding-top:15px;color:#756566}
+    .venue{position:relative;margin:0;background:#d9c9b2;overflow:hidden}
+    .venue img{width:100%;height:min(78vh,820px);object-fit:cover;display:block}
+    .venue-copy{position:absolute;right:clamp(20px,6vw,88px);bottom:clamp(22px,6vw,70px);max-width:430px;padding:28px;background:rgba(255,254,250,.9);border:1px solid rgba(117,97,77,.25);box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+    .venue-copy h2{font:600 clamp(38px,5vw,60px)/.95 "Cormorant Garamond",serif;margin:8px 0 12px}.venue-copy p{margin:0;color:#61564d}
+    .arrival{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px;padding-top:18px;border-top:1px dashed #bda98f}.arrival-copy{display:grid;gap:2px}.arrival-copy strong{font-size:16px}.arrival-copy span{color:#7b6a59;font-size:13px}.waze-link{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;padding:11px 15px;background:#312b25;color:#fffefa;text-decoration:none;font-weight:800;border:1px solid #312b25;transition:.2s ease}.waze-link:before{content:"W";display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#63d7f4;color:#173640;font:800 14px Arial,sans-serif}.waze-link:hover,.waze-link:focus-visible{background:#75614d;border-color:#75614d;transform:translateY(-2px)}
+    .section{padding:90px clamp(20px,6vw,88px)}
+    .section-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:44px;align-items:end;margin-bottom:48px}
+    .eyebrow{font-weight:800;color:var(--wine);font-size:14px;letter-spacing:.12em}.section h2{font:600 clamp(45px,6vw,76px)/.95 "Cormorant Garamond",serif;margin:10px 0}.section-head>p{font-size:19px;max-width:700px;margin:0;color:#615253}
+    .menu-section{background:#e5d8c5;color:var(--ink);position:relative;overflow:hidden;border-block:1px solid #cdbda5}.menu-section:before{content:"";position:absolute;inset:0;opacity:.13;background-image:linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:38px 38px;background-position:0 0,0 19px,19px -19px,-19px 0}
+    .menu-wrap{position:relative}.menu-section .eyebrow{color:#685744}.menu-section .section-head>p{color:#665a50}
+    .restaurant-menu{position:relative;width:min(1180px,100%);margin:0 auto;padding:clamp(30px,5vw,66px);background:#fffdf8;border:1px solid #a58b69;box-shadow:0 28px 80px rgba(74,57,39,.18),inset 0 0 0 7px #fffdf8,inset 0 0 0 8px #d3c0a6}
+    .restaurant-menu:before,.restaurant-menu:after{content:"MG";position:absolute;color:#a58b69;font:600 13px "Cormorant Garamond",serif;letter-spacing:.18em}.restaurant-menu:before{top:18px;left:22px}.restaurant-menu:after{right:22px;bottom:18px;transform:rotate(180deg)}
+    .menu-masthead{text-align:center;padding:0 0 26px}.menu-masthead img{width:132px;height:58px;object-fit:contain}.menu-masthead small{display:block;color:#80694e;font-size:12px;font-weight:800;letter-spacing:.19em;direction:ltr}.menu-masthead h3{margin:7px 0 2px;color:#322a23;font:600 clamp(42px,5vw,64px)/1 "Cormorant Garamond",serif;direction:ltr}.menu-masthead p{margin:0;color:#8a755e;font:italic 17px "Cormorant Garamond",serif;direction:ltr}
+    .menu-ornament{display:flex;align-items:center;gap:12px;margin-bottom:28px;color:#a3835e}.menu-ornament:before,.menu-ornament:after{content:"";height:1px;flex:1;background:#bda88e}.menu-ornament span{font-size:14px}
+    .menu-category{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:24px 0 12px;padding-bottom:7px;border-bottom:2px solid #6f5942}.menu-category strong{font:600 24px "Cormorant Garamond",serif;letter-spacing:.11em;direction:ltr}.menu-category span{color:#8b755d;font:italic 15px "Cormorant Garamond",serif;direction:ltr}
+    .bases{display:grid;grid-template-columns:1fr 1fr;margin-bottom:28px}.base{padding:17px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px dotted #b9a388}.base:first-child{border-left:1px solid #d4c5b2}.base strong{font:600 25px "Cormorant Garamond",serif;direction:ltr}.base span{color:#75614d;font-size:14px;font-weight:700}
+    .flavors{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:0}.flavor{appearance:none;text-align:right;min-height:205px;padding:24px 28px 52px;border:0;border-bottom:1px dotted #b9a388;background:transparent;color:var(--ink);cursor:pointer;position:relative;transition:background .25s ease,transform .25s ease}.flavor:nth-child(odd){border-left:1px solid #d4c5b2}.flavor:hover,.flavor:focus-visible{transform:none;background:#f8f0e4;outline:1px solid #a98b67;outline-offset:-1px;box-shadow:none}.flavor .fnum{position:absolute;top:21px;left:24px;color:#9c7e5b;font:600 25px "Cormorant Garamond",serif}.flavor h3{margin:0 0 8px;padding-left:48px;font:600 29px "Cormorant Garamond",serif;direction:ltr;text-align:left}.flavor .poem{margin:0;color:#7b6c60;font:italic 17px "Cormorant Garamond",serif;direction:ltr;text-align:left}.flavor:after{content:"לחצו לתרגום";position:absolute;right:28px;bottom:20px;color:#846b4e;font-size:13px;font-weight:800}.secret{display:none;margin:17px 0 0;padding-top:12px;border-top:1px solid #d7c9b8;color:#5b4a39}.secret span,.secret strong{display:block}.secret span{font-size:16px;margin-bottom:7px}.secret strong{font-size:17px}.flavor.selected .secret{display:block;animation:cardReveal .32s ease}.flavor.selected .poem{display:none}.flavor.selected{background:#f5eadb;box-shadow:inset 0 0 0 2px #aa8a65}.flavor.selected:after{content:"לחצו לסגירה"}@keyframes cardReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .menu-foot{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:30px;color:#80694e;font:italic 15px "Cormorant Garamond",serif;direction:ltr}.menu-foot:before,.menu-foot:after{content:"✦";font-style:normal;font-size:10px}
+    .atmosphere{background:#fffefa;overflow:hidden}.gallery{display:grid;grid-template-columns:1.35fr .65fr;grid-template-rows:repeat(2,minmax(280px,430px));gap:18px}.gallery figure{margin:0;position:relative;overflow:hidden;background:#d9c9b2}.gallery figure:first-child{grid-row:span 2}.gallery img{width:100%;height:100%;object-fit:cover;display:block}.gallery figcaption{position:absolute;inset:auto 18px 18px 18px;padding:14px 16px;background:rgba(255,254,250,.88);border:1px solid rgba(117,97,77,.2);backdrop-filter:blur(9px);font-weight:700}.gallery figcaption span{display:block;color:#75614d;font:italic 18px "Cormorant Garamond",serif;direction:ltr;text-align:left}
+    .music-section{position:relative;overflow:hidden;background:#211c18;color:#fffefa}.music-section:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 18%,rgba(177,139,91,.2),transparent 30%),linear-gradient(125deg,transparent 64%,rgba(255,255,255,.035));pointer-events:none}.music-section .section-head,.music-layout{position:relative;z-index:1}.music-section .eyebrow{color:#d6b585}.music-section .section-head>p{color:#cbbfb2}.music-section h2{max-width:760px}.music-layout{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:clamp(20px,4vw,54px);align-items:stretch}.music-hero{position:relative;min-height:680px;overflow:hidden;background:#4a3a2d;box-shadow:0 30px 80px rgba(0,0,0,.3)}.music-hero>img{width:100%;height:100%;object-fit:cover;display:block}.music-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,19,15,.88),transparent 58%),linear-gradient(90deg,rgba(24,19,15,.18),transparent)}.music-hero-caption{position:absolute;z-index:2;right:clamp(20px,4vw,42px);bottom:clamp(20px,4vw,42px);left:clamp(20px,4vw,42px)}.music-hero-caption small{color:#d6b585;font-size:12px;font-weight:800;letter-spacing:.16em}.music-hero-caption strong{display:block;max-width:700px;margin-top:8px;font:600 clamp(34px,4vw,58px)/.98 "Cormorant Garamond",serif}.music-manifesto{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(26px,4vw,46px);border:1px solid rgba(222,190,145,.32);background:rgba(255,255,255,.035)}.music-opening{margin:0;color:#e3d9ce;font-size:18px}.music-statement{margin:28px 0;padding:22px 0;border-block:1px solid rgba(222,190,145,.3);color:#f0d4a6;font:600 clamp(30px,3vw,43px)/1.05 "Cormorant Garamond",serif}.music-values{display:grid;gap:0}.music-value{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.12)}.music-value:first-child{border-top:1px solid rgba(255,255,255,.12)}.music-value b{display:block;margin-bottom:4px;color:#fff;font-size:17px}.music-value span{color:#bfb3a7;font-size:15px}.sound-journey{margin-top:30px;padding:20px;background:#f0e4d2;color:#2d2620}.sound-journey small{display:block;margin-bottom:12px;color:#7b644b;font-weight:800;letter-spacing:.12em}.sound-line{display:flex;align-items:center;gap:12px;font-weight:800}.sound-line i{height:1px;flex:1;background:linear-gradient(90deg,#a78259,#d2b58d);position:relative}.sound-line i:after{content:"";position:absolute;left:0;top:50%;width:7px;height:7px;border-radius:50%;background:#8d6d49;transform:translateY(-50%)}.sound-line em{font:italic 20px "Cormorant Garamond",serif;direction:ltr}
+    .reveal-media{opacity:1;filter:none;box-shadow:0 24px 62px rgba(95,70,39,.14)}
+    [data-scroll-media]{will-change:transform;backface-visibility:hidden;transform-origin:center}
+    .roles{display:grid;grid-template-columns:1fr 1fr;gap:22px}.role{background:var(--paper);padding:38px;border-top:5px solid var(--wine);box-shadow:0 14px 40px rgba(75,61,45,.08)}.role-label{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.14em}.role h3{font:600 38px "Cormorant Garamond",serif;margin:8px 0 18px}.quote{padding:18px 0;border-top:1px dashed #cabdaf;font-weight:700}.quote:last-child{border-bottom:1px dashed #cabdaf}.quote em{display:block;font:italic 20px "Cormorant Garamond",serif;direction:ltr;text-align:left;color:var(--wine);margin-bottom:4px}.pressure{margin-top:28px;padding:24px;background:var(--espresso);color:white}.pressure-top{display:flex;align-items:center;justify-content:space-between;gap:20px}.timer{font:600 52px/1 "Cormorant Garamond",serif;color:#ead9bd;direction:ltr}.pressure button{border:1px solid #ead9bd;background:transparent;color:#fff;padding:10px 18px;cursor:pointer}.pressure button:hover{background:#ead9bd;color:var(--espresso)}
+    .ops{background:#f8f4ec;color:var(--ink)}.ops .section-head>p{color:#675d54}.ops .eyebrow{color:#75614d}.ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.op{padding:28px;border:1px solid #d1c4b2;background:#fffefa}.op .icon{font-size:26px;color:#9a7d5b}.op h3{margin:28px 0 8px;font-size:20px}.op p{margin:0;color:#695f56;font-size:15px}.safe{grid-column:span 3;background:#dfd1bd;color:#2a2420;display:grid;grid-template-columns:.8fr 2fr;gap:30px;align-items:center}.safe p{color:#534b43}
+    footer{padding:48px clamp(20px,6vw,88px);display:flex;justify-content:space-between;align-items:center;gap:25px;background:#ded1be;color:#51483f}.footer-brand{font:600 30px "Cormorant Garamond",serif;color:#2d2823;direction:ltr}.stamp{border:2px solid #8a745c;color:#76614c;padding:8px 16px;font-size:13px;font-weight:800;letter-spacing:.15em;transform:rotate(-4deg)}
+    @media(max-width:900px){
+      nav{display:none}
+      .hero{padding-bottom:52px}
+      .hero-card{position:relative;right:auto;bottom:auto;width:min(100%,330px);margin:34px auto 0;transform:none}
+      .section-head{grid-template-columns:1fr;gap:10px}
+      .roles{grid-template-columns:1fr}
+      .ops-grid{grid-template-columns:1fr 1fr}.safe{grid-column:span 2}
+      .gallery{grid-template-columns:1fr 1fr;grid-template-rows:430px 320px}.gallery figure:first-child{grid-column:span 2;grid-row:auto}
+      .music-layout{grid-template-columns:1fr}.music-hero{min-height:600px}.music-manifesto{min-height:620px}
+    }
+    @media(max-width:768px){
+      .gallery figure img{height:116%;margin-top:-8%;will-change:transform}
+      .venue{min-height:72vh}.venue img{height:calc(72vh + 80px);margin-block:-40px}
+      .section{position:relative}.base,.role,.op{backface-visibility:hidden}
+    }
+    @media(max-width:600px){
+      body{font-size:16px}.topbar{min-height:58px;padding:6px 12px}.brand-logo{width:96px;height:40px}.stamp{padding:6px 10px;font-size:12px}
+      .hero{min-height:auto;padding:58px 18px 42px;background-position:61% center}.hero:after{inset:8px}.logo-scroll-scene{position:relative;display:block;width:100%;height:72svh;min-height:540px}.logo-stage{position:sticky;top:16svh;width:min(88vw,390px);margin:0 auto;z-index:3}.hero h1{font-size:clamp(49px,15vw,66px)}.hero-card{width:100%;margin-top:30px;padding:24px;transform:none}.kicker{font-size:12px}.kicker:before,.kicker:after{width:24px}
+      .chapter-mark{top:14px;right:14px;left:14px}.chapter-mark span{width:32px;height:32px}
+      .venue{display:flex;min-height:0;flex-direction:column;padding-bottom:46px;background:#f7f1e7;overflow:hidden}.venue>img{order:1;width:112%;height:68svh;min-height:510px;margin:0 -6%;object-position:center;flex:none}.venue-copy{position:relative;order:2;right:auto;left:auto;bottom:auto;margin:20px 14px 0;padding:25px 20px;background:#fffefa;backdrop-filter:none}.arrival{align-items:stretch;flex-direction:column;gap:14px;margin-top:19px;padding-top:17px}.waze-link{justify-content:center;min-height:58px;font-size:17px;box-shadow:0 12px 26px rgba(49,43,37,.2)}
+      .section{padding:88px 14px 76px}.section-head{gap:16px;margin-bottom:38px}.section-head>p{font-size:17px}.section h2{font-size:clamp(42px,13vw,58px)}
+      #journey.journey-entry{padding:78px 0 82px;overflow:hidden}.journey-entry-card{display:flex;min-height:0;flex-direction:column;align-items:stretch;overflow:visible;background:transparent;box-shadow:none}.journey-entry-card>img{position:relative;inset:auto;width:112%;height:68svh;min-height:520px;margin:0 -6%;object-position:68% center;flex:none}.journey-entry-card:after{top:0;right:0;bottom:auto;left:0;height:68svh;min-height:520px;background:linear-gradient(0deg,rgba(30,24,19,.18),transparent 42%);pointer-events:none}.journey-entry-copy{width:auto;margin:20px 14px 0;padding:29px 20px;background:#fffefa;backdrop-filter:none}.journey-entry-copy h2{font-size:47px}.journey-entry-copy p{font-size:17px}.journey-route{gap:6px;justify-content:space-between;font-size:12px}.journey-route i{display:none}.journey-entry-button{position:relative;min-height:72px;padding:15px 17px 15px 20px;background:linear-gradient(135deg,#312b25,#75614d);border-color:#75614d;font-size:18px;box-shadow:0 16px 34px rgba(49,43,37,.32)}.journey-entry-button b{width:43px;height:43px;flex:0 0 43px;background:#f2d6a6;box-shadow:0 0 0 5px rgba(242,214,166,.12)}.journey-entry-note{margin-top:14px;font-size:13px}
+      .restaurant-menu{padding:34px 18px}.menu-masthead h3{font-size:42px}.menu-category{align-items:flex-start;flex-direction:column;gap:2px}.flavors,.bases,.ops-grid{grid-template-columns:1fr}.base:first-child,.flavor:nth-child(odd){border-left:0}.flavor{min-height:190px;padding-inline:14px}.flavor .fnum{left:14px}.flavor:after{right:14px}
+      .gallery{grid-template-columns:1fr;grid-template-rows:none;gap:24px}.gallery figure,.gallery figure:first-child{display:flex;grid-column:auto;min-height:0;flex-direction:column}.gallery figure img{width:100%;height:64svh;min-height:470px;margin:0;flex:none}.gallery figcaption{position:relative;inset:auto;padding:19px 18px;background:#f4ecdf;border:0;border-top:1px solid #d2c2ad;backdrop-filter:none}
+      .music-layout{gap:22px}.music-hero{display:flex;min-height:0;flex-direction:column}.music-hero>img{height:66svh;min-height:500px;object-position:center 40%;flex:none}.music-hero:after{display:none}.music-hero-caption{position:relative;right:auto;bottom:auto;left:auto;padding:24px 20px;background:#312920}.music-hero-caption strong{font-size:36px}.music-manifesto{min-height:0;padding:28px 20px}.music-opening{font-size:16px}.music-statement{margin:24px 0;font-size:34px}.sound-line{align-items:flex-start;flex-wrap:wrap}.sound-line i{flex-basis:60px;margin-top:13px}
+      .safe{grid-column:span 1;grid-template-columns:1fr}.role{padding:24px}.pressure-top{align-items:flex-end}
+      footer{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:380px){.hero h1{font-size:50px}.journey-entry-copy h2{font-size:40px}.journey-route{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flavor,.journey-entry-button{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><img class="brand-logo" src="assets/morning-glory-logo.svg" alt="Morning Glory" /></a>
+    <nav aria-label="ניווט ראשי"><a href="#venue">המקום</a><a href="#journey">החוויה</a><a href="#music">המוזיקה</a><a href="#menu">התפריט</a><a href="#roles">הצוות</a><a href="https://ul.waze.com/ul?venue_id=23003444.229772298.2120141&amp;overview=yes&amp;utm_campaign=default&amp;utm_source=waze_website&amp;utm_medium=lm_share_location" target="_blank" rel="noopener noreferrer">Waze</a></nav>
+    <span class="stamp">DOSSIER 01</span>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="logo-scroll-scene">
+          <div class="logo-stage" id="heroLogo" role="img" aria-label="Morning Glory">
+            <img class="logo-layer logo-rays" src="assets/morning-glory-logo.svg" alt="" aria-hidden="true" />
+            <img class="logo-layer logo-emblem" src="assets/morning-glory-logo.svg" alt="" aria-hidden="true" />
+            <img class="logo-layer logo-wordmark" src="assets/morning-glory-logo.svg" alt="" aria-hidden="true" />
+          </div>
+        </div>
+        <div class="kicker">ספר קונספט חווייתי</div>
+        <h1>La Roulette<br>du Café <i>Vous choisissez. Nous savons.</i></h1>
+        <p>בית קפה צרפתי מתוק למראה, שמסתיר משחק קטן של לחץ, מסתורין והחלטות מפוקפקות. האורחים בוחרים בצרפתית. המטבח יודע מה באמת יגיע.</p>
+      </div>
+      <aside class="hero-card" aria-label="עיקרון החוויה">
+        <div class="num">10″</div>
+        <strong>זה כל הזמן שיש לבחור.</strong>
+        <p>אחרי שעוברים את הגבול, אי אפשר לשאול מה יש במנה.</p>
+        <small>אלרגיות ורגישויות נבדקות מראש, מחוץ למשחק.</small>
+      </aside>
+    </section>
+
+    <section class="venue chapter" id="venue">
+      <div class="chapter-mark light" aria-hidden="true"><span>01</span><b>LE LIEU</b></div>
+      <img class="reveal-media" data-scroll-media data-scroll-frame="venue" data-scroll-x="0" data-scroll-y="-68" data-scroll-scale="1.12" src="assets/venue-reference.webp" alt="מתחם Morning Glory באירוע מדברי בגווני בז׳ ולבן" />
+      <div class="venue-copy">
+        <span class="eyebrow">LE LIEU</span>
+        <h2>בית קפה צרפתי באמצע המדבר</h2>
+        <p>בדים בהירים, במבוק, תאורה חמה ומוזיקה ברקע. מבחוץ הכול רגוע ואלגנטי. בפנים — המטבח כבר מתכנן את ההפתעה הבאה.</p>
+        <div class="arrival">
+          <div class="arrival-copy"><strong>כתובת הגעה</strong><span>המיקום המדויק שמור ב־Waze</span></div>
+          <a class="waze-link" href="https://ul.waze.com/ul?venue_id=23003444.229772298.2120141&amp;overview=yes&amp;utm_campaign=default&amp;utm_source=waze_website&amp;utm_medium=lm_share_location" target="_blank" rel="noopener noreferrer" aria-label="פתיחת כתובת ההגעה ב-Waze">נווטו עכשיו</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey-entry chapter" id="journey">
+      <div class="chapter-mark" aria-hidden="true"><span>02</span><b>LE PARCOURS</b></div>
+      <div class="journey-entry-card">
+        <img data-scroll-media data-scroll-frame="journey-entry-card" data-scroll-x="-58" data-scroll-y="0" data-scroll-scale="1.1" src="assets/journey-hostess.webp" alt="המארחת מקבלת את פני האורחים בתחילת מסלול האירוח" />
+        <div class="journey-entry-copy">
+          <span class="eyebrow">THE INTERACTIVE EXPERIENCE</span>
+          <h2>מוכנים לתת לצרפת להחליט?</h2>
+          <p>עוברים בין שלוש תחנות, בוחרים מנה בלי להבין מה כתוב — ומגלים את ההפתעה רק אצל השף.</p>
+          <div class="journey-route" aria-label="שלבי החוויה"><span>01 המארחת</span><i>←</i><span>02 הקופה</span><i>←</i><span>03 השף</span></div>
+          <a class="journey-entry-button" href="experience/"><span>כן, תכניסו אותי למסלול</span><b aria-hidden="true">←</b></a>
+          <small class="journey-entry-note">לחיצה פותחת את החוויה המלאה בעמוד נפרד</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section atmosphere chapter" id="atmosphere">
+      <div class="chapter-mark" aria-hidden="true"><span>03</span><b>L’AMBIANCE</b></div>
+      <div class="section-head">
+        <div><span class="eyebrow">L’AMBIANCE</span><h2>כשהקפה הופך למסיבה</h2></div>
+        <p>מוזיקה, פנקייקים מוגזמים ומתחם שחי גם אחרי סיום ההגשה. זה הרגע שבו חוויית האוכל הופכת לרחבה.</p>
+      </div>
+      <div class="gallery">
+        <figure class="reveal-media"><img data-scroll-media data-scroll-x="20" data-scroll-y="-30" data-scroll-scale="1.08" src="assets/journey-chef.webp" alt="שף משוגע מגיש מגדל פנקייקים עם תוספות מפתיעות" /><figcaption>מטבח שהוא מופע חי<span>Les chefs sont prêts. Presque.</span></figcaption></figure>
+        <figure class="reveal-media"><img data-scroll-media data-scroll-x="-28" data-scroll-y="18" data-scroll-scale="1.08" src="assets/chef-action.webp" alt="שף בפעולה במטבח הפנקייקים" /><figcaption>הטירוף קורה מול העיניים<span>Le spectacle est servi.</span></figcaption></figure>
+        <figure class="reveal-media"><img data-scroll-media data-scroll-x="24" data-scroll-y="24" data-scroll-scale="1.08" src="assets/journey-cashier.webp" alt="לקוח מבולבל מול קופאי ותפריט בצרפתית" /><figcaption>רגע הבחירה העיוורת<span>Choisissez vite, monsieur.</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section music-section chapter" id="music">
+      <div class="chapter-mark light" aria-hidden="true"><span>04</span><b>LA MUSIQUE</b></div>
+      <div class="section-head">
+        <div><span class="eyebrow">LE MANIFESTE MUSICAL</span><h2>לא באנו לנגן לכם את מה שכבר שמעתם</h2></div>
+        <p>המסיבה של Morning Glory היא מסע אוצרות מוזיקלי: עמוק, גרובי, לא צפוי — ובכל יום היא הולכת למקום אחר.</p>
+      </div>
+      <div class="music-layout">
+        <figure class="music-hero reveal-media">
+          <img data-scroll-media data-scroll-x="-22" data-scroll-y="-34" data-scroll-scale="1.08" src="assets/cafe-party.webp" alt="רחבת המסיבה סביב המזרקה והדי־ג׳יי של Morning Glory" />
+          <figcaption class="music-hero-caption"><small>NO REQUESTS · JUST DISCOVERY</small><strong>בבוקר מתחילים בדאון־טמפו. משם — המסע כבר ימצא את הדרך.</strong></figcaption>
+        </figure>
+        <article class="music-manifesto">
+          <div>
+            <p class="music-opening">לא, לא באנו להתחנף עם המוזיקה שאתם רגילים לשמוע. לא מעניינים אותנו “בנגרים” רק כי כולם מכירים אותם. אם חיפשתם את אותם להיטים קבועים — כנראה שכדאי להמשיך הלאה.</p>
+            <blockquote class="music-statement">אנחנו לא מחפשים להתחנף.<br />אנחנו מחפשים אמנות.</blockquote>
+            <div class="music-values">
+              <div class="music-value"><b>גרוב לפני הכול</b><span>מוזיקה מיוחדת, עמוקה ומלאה בתנועה.</span></div>
+              <div class="music-value"><b>להרחיב את האופק</b><span>אמנים וסגנונות לא־קונבנציונליים עם אלמנטים מפתיעים.</span></div>
+              <div class="music-value"><b>בכל יום מסע אחר</b><span>בלי פלייליסט בטוח, בלי נוסחה קבועה ובלי למחזר את אתמול.</span></div>
+            </div>
+          </div>
+          <div class="sound-journey">
+            <small>LE VOYAGE DU JOUR</small>
+            <div class="sound-line"><span>בוקר</span><em>Downtempo</em><i aria-hidden="true"></i><span>כיוון חדש בכל יום</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section menu-section chapter" id="menu">
+      <div class="chapter-mark" aria-hidden="true"><span>05</span><b>LE MENU</b></div>
+      <div class="menu-wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">LE MENU INTERDIT</span><h2>התפריט האסור</h2></div>
+          <p>לחצו על אחת המנות בצרפתית כדי לחשוף באותה שורה את התרגום ואת מה שמסתתר מאחוריה.</p>
+        </div>
+        <div class="restaurant-menu">
+          <header class="menu-masthead">
+            <img src="assets/morning-glory-logo.svg" alt="Morning Glory" />
+            <small>MAISON DU DÉSERT · SERVICE CONTINU</small>
+            <h3>La Carte du Désert</h3>
+            <p>Choisissez avec confiance. Ou faites semblant.</p>
+          </header>
+          <div class="menu-ornament" aria-hidden="true"><span>✦</span></div>
+          <div class="menu-category"><strong>LES BASES</strong><span>Choisissez votre début</span></div>
+        <div class="bases">
+          <div class="base"><strong>Gaufre de Bruxelles</strong><span>ופל בלגי</span></div>
+          <div class="base"><strong>Nuage Américain</strong><span>פנקייק עבה</span></div>
+        </div>
+        <div class="menu-category"><strong>LES SIGNATURES</strong><span>Touchez un plat pour le révéler</span></div>
+        <div class="flavors">
+          <button class="flavor" data-name="Le Marais No. 7" aria-expanded="false"><span class="fnum">01</span><h3>Le Marais No. 7</h3><p class="poem">Élégant. Excessif. Presque légal.</p><p class="secret"><span>אלגנטי. מוגזם. כמעט חוקי.</span><strong>מתוק מאוד · שוקולד, לוטוס ומרשמלו</strong></p></button>
+          <button class="flavor" data-name="Montmartre Rouge" aria-expanded="false"><span class="fnum">02</span><h3>Montmartre Rouge</h3><p class="poem">Pour les gens beaucoup trop confiants.</p><p class="secret"><span>לאנשים עם קצת יותר מדי ביטחון עצמי.</span><strong>מתוק־חריף · שוקולד וצ’ילי עדין</strong></p></button>
+          <button class="flavor" data-name="La Nuit Blanche" aria-expanded="false"><span class="fnum">03</span><h3>La Nuit Blanche</h3><p class="poem">Douce en apparence. Aucun témoin.</p><p class="secret"><span>מתוקה למראה. בלי עדים.</span><strong>חלום לבן · שוקולד לבן, קוקוס וקצפת</strong></p></button>
+          <button class="flavor" data-name="Versailles 03" aria-expanded="false"><span class="fnum">04</span><h3>Versailles 03</h3><p class="poem">Une décision royale. Une fin discutable.</p><p class="secret"><span>החלטה מלכותית. סוף מפוקפק.</span><strong>חמוץ · לימון, פירות יער וסוכריות חמוצות</strong></p></button>
+          <button class="flavor" data-name="Monsieur Philippe" aria-expanded="false"><span class="fnum">05</span><h3>Monsieur Philippe</h3><p class="poem">Personne ne sait qui est Philippe.</p><p class="secret"><span>אף אחד לא יודע מי זה פיליפ.</span><strong>מלוח־מתוק · מייפל, בייגלה וקרמל מלוח</strong></p></button>
+          <button class="flavor" data-name="L’Accident" aria-expanded="false"><span class="fnum">06</span><h3>L’Accident</h3><p class="poem">Ce n'était pas prévu. Tant mieux.</p><p class="secret"><span>זה לא היה מתוכנן. וטוב שכך.</span><strong>הפתעת הערב · קומבינציה משתנה וצבעונית</strong></p></button>
+        </div>
+          <div class="menu-foot">Bon appétit. Bonne chance.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section chapter" id="roles">
+      <div class="chapter-mark" aria-hidden="true"><span>06</span><b>LE SPECTACLE</b></div>
+      <div class="section-head">
+        <div><span class="eyebrow">LE SPECTACLE</span><h2>תסריטי הצוות</h2></div>
+        <p>הטון: סמכותי, אבסורדי ומהיר — אף פעם לא תוקפני או משפיל. הצוות משחק את המצב, לא את האדם.</p>
+      </div>
+      <div class="roles">
+        <article class="role">
+          <span class="role-label">POSTE 01 · ENTRÉE</span><h3>המארחת</h3>
+          <div class="quote"><em>“Bienvenue. Passport, please.”</em>לפני הכניסה: יש אלרגיות, רגישויות או משהו שאסור לך לאכול?</div>
+          <div class="quote"><em>“From this point — no Hebrew.”</em>מרגע שעברת את הגבול, הבחירות שלך הן באחריות צרפת.</div>
+          <div class="quote"><em>“Bonne chance. You will need it.”</em>חותמת בדרכון, מבט מודאג והפניה לקופה.</div>
+        </article>
+        <article class="role">
+          <span class="role-label">POSTE 02 · CAISSE</span><h3>הקופאי</h3>
+          <div class="quote"><em>“If you need to ask, you are not ready.”</em>אסור להסביר. מותר רק לגרום לכל אופציה להישמע מסוכנת.</div>
+          <div class="quote"><em>“For you? I would not choose this.”</em>אחרי כל בחירה — מבט ארוך, נשיפה ואכזבה קלה.</div>
+          <div class="quote"><em>“UNE MAUVAISE DÉCISION!”</em>צלצול בפעמון. המטבח עונה יחד: “OUI, CHEF!”</div>
+          <div class="pressure">
+            <div class="pressure-top"><div><strong>סימולטור לחץ</strong><br><small>לחצו והעבירו את המסך לאורח.</small></div><div class="timer" id="timer">10</div></div>
+            <button id="startTimer">התחל ספירה</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section ops chapter" id="ops">
+      <div class="chapter-mark" aria-hidden="true"><span>07</span><b>LES RÈGLES</b></div>
+      <div class="section-head">
+        <div><span class="eyebrow">RÈGLES DE SERVICE</span><h2>כללי הפעלה</h2></div>
+        <p>המסתורין שייך לטעם בלבד. בטיחות, גבולות אישיים והסכמה נשארים ברורים לחלוטין.</p>
+      </div>
+      <div class="ops-grid">
+        <article class="op"><span class="icon">✦</span><h3>קוד צבע נסתר</h3><p>מדבקה על הדרכון מסמנת טבעוני, חלבי, ללא גלוטן או ללא חריף — בלי להרוס את ההפתעה.</p></article>
+        <article class="op"><span class="icon">◉</span><h3>חריפות מבוקרת</h3><p>רק חריף קל ומוצהר מראש. מי שלא אישר חריף לעולם לא יקבל אותו כחלק מהמתיחה.</p></article>
+        <article class="op"><span class="icon">↺</span><h3>יציאה מהמשחק</h3><p>המילים “בלי משחק” עוצרות מיד את הדמות. האורח מקבל הסבר מלא ובוחר מנה רגילה.</p></article>
+        <article class="op safe"><div><span class="role-label">NON NÉGOCIABLE</span><h3>מצחיק כי כולם בפנים</h3></div><p>לא מצלמים בלי רשות, לא לוקחים טלפון, לא מכריחים לטעום ולא משתמשים באלרגיות כחלק מהבדיחה. החוויה טובה כשהאורח מרגיש שאיבד שליטה — בזמן שבפועל הוא בטוח ושולט בגבולות.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><div><div class="footer-brand">MORNING GLORY</div><span>French café concept · édition expérimentale</span></div><span class="stamp">APPROUVÉ PAR PERSONNE</span></footer>
+
+  <script>
+    const flavors = document.querySelectorAll('.flavor');
+    flavors.forEach(card => card.addEventListener('click', () => {
+      const willOpen = !card.classList.contains('selected');
+      flavors.forEach(item => {
+        item.classList.remove('selected');
+        item.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        card.classList.add('selected');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }));
+    let countdown;
+    document.getElementById('startTimer').addEventListener('click', event => {
+      clearInterval(countdown); let n = 10; const timer = document.getElementById('timer');
+      timer.textContent = n; event.currentTarget.textContent = 'France is waiting…';
+      countdown = setInterval(() => { n -= 1; timer.textContent = n > 0 ? n : 'TROP TARD'; if(n <= 0){ clearInterval(countdown); event.currentTarget.textContent = 'נסה שוב'; } }, 1000);
+    });
+
+    const heroLogo = document.getElementById('heroLogo');
+    const logoRays = heroLogo?.querySelector('.logo-rays');
+    const logoEmblem = heroLogo?.querySelector('.logo-emblem');
+    const logoWordmark = heroLogo?.querySelector('.logo-wordmark');
+    const scrollMedia = [...document.querySelectorAll('[data-scroll-media]')];
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    let scrollFrame = 0;
+    const paintScroll = () => {
+      scrollFrame = 0;
+      const viewportHeight = Math.max(1, window.innerHeight);
+      scrollMedia.forEach(media => {
+        const frameName = media.dataset.scrollFrame;
+        const frame = frameName ? media.closest(`.${frameName}`) : media.parentElement;
+        const rect = frame.getBoundingClientRect();
+        if (rect.bottom < -viewportHeight || rect.top > viewportHeight * 2) return;
+        const progress = clamp((viewportHeight - rect.top) / (viewportHeight + rect.height), 0, 1);
+        const centered = progress - .5;
+        const x = centered * Number(media.dataset.scrollX || 0);
+        const y = centered * Number(media.dataset.scrollY || 0);
+        const scale = Number(media.dataset.scrollScale || 1.06);
+        media.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) scale(${scale})`;
+      });
+
+      if (!heroLogo || !logoRays) return;
+      const mobile = window.matchMedia('(max-width: 600px)').matches;
+      const range = mobile ? Math.max(170, window.innerHeight * .34) : Math.max(240, window.innerHeight * .48);
+      const scrollTop = document.scrollingElement?.scrollTop || window.pageYOffset || 0;
+      const progress = clamp(scrollTop / range, 0, 1);
+      const expansion = mobile ? .38 : .3;
+      const lift = 0;
+      logoRays.style.transform = `translate3d(0,${(lift * progress).toFixed(2)}px,0) scale(${(1 + expansion * progress).toFixed(4)})`;
+      logoRays.style.opacity = '1';
+      logoRays.style.filter = `drop-shadow(0 0 ${(4 + 22 * progress).toFixed(2)}px rgba(190,139,72,${(.18 + .7 * progress).toFixed(3)}))`;
+      logoEmblem.style.transform = 'translateZ(0)';
+      logoWordmark.style.transform = 'translateZ(0)';
+      logoWordmark.style.opacity = '1';
+      heroLogo.style.setProperty('--ray-aura', (.1 + .86 * progress).toFixed(3));
+    };
+    const requestScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(paintScroll); };
+    window.addEventListener('scroll', requestScroll, { passive: true });
+    window.addEventListener('resize', requestScroll, { passive: true });
+    requestScroll();
+  </script>
+</body>
+</html>
