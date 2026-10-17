@@ -16,12 +16,11 @@ description: >-
 
 # Ableton House & Techno Bass
 
-The bassline is the groove of a house record. Kerri Chandler puts it bluntly: "the bassline
-is the groove of the song". A kick on every quarter note is a fixed grid; the bass is the
-part that decides whether the grid *walks*, *bounces* or *rolls*. This skill turns that
-intuition into a repeatable method: choose the subgenre, pick a rhythmic archetype, pick the
-notes, shape velocity / length / timing, then phrase it over 8 bars and lock it to the kick
-in Ableton.
+The bassline is the groove of a house record. Kerri Chandler builds tracks bass-first; Larry
+Heard's "Can You Feel It" is six notes on a Juno-60. A kick on every quarter note is a fixed
+grid; the bass decides whether the grid *walks*, *bounces* or *rolls*. This skill turns that
+into a repeatable method: fix the frame, pick a rhythmic archetype, pick the notes, shape
+velocity / length / timing, phrase it over 4 and 8 bars, lock it to the kick in Ableton.
 
 Answer in the language the user writes in (Hebrew users get Hebrew). Keep musical terms in
 English alongside (e.g. "אופביט (offbeat)") so they can search for them.
@@ -34,105 +33,121 @@ Load only what the task needs, in this order:
 |---|---|
 | Any new bassline | `references/rhythm.md` then `references/theory.md` |
 | Deep house | `references/deep-house.md` |
-| Tech house / minimal / deep tech | `references/tech-house.md` |
+| Tech house / deep tech / minimal | `references/tech-house.md` |
 | Groovy, jackin', funky, disco or French house | `references/groovy-house.md` |
-| Techno (rumble, rolling, hypnotic) | `references/techno.md` |
+| Techno, rumble, acid | `references/techno.md` |
 | Programming it in Live (Groove Pool, MIDI Tools, synth settings, sidechain) | `references/ableton-workflow.md` |
 | Need a concrete grid to start from or to hand the user | `references/patterns.md` |
-| User asks where a claim comes from | `references/sources.md` |
+| User asks where a claim comes from | `references/sources.md` (all articles read in full) |
 
-The generator lives in `scripts/make_bass_midi.py` (pure Python 3, no packages). Run
-`python3 scripts/make_bass_midi.py --list` to see the built-in styles.
+The generator is `scripts/make_bass_midi.py` (Python 3, no packages). `--list` shows 28
+built-in styles; `--pattern` takes the grid notation from `references/patterns.md`.
 
-## The method (do these in order)
+## The method
 
 ### 1. Fix the frame before writing a note
-- **Tempo and subgenre.** Deep house 118–124 BPM, tech house 124–128, jackin'/funky
-  122–128, techno 128–135+. Tempo decides how much 16th-note density the ear can take.
-- **Key.** If there are chords, the bass takes the chord roots. If not, pick a key whose
-  root sits in the sub sweet spot: fundamentals roughly E1 (41 Hz) to G2 (98 Hz). The most
-  common house keys are A minor, F minor, G minor, C minor and D minor; techno leans on A, D,
-  E minor and E Phrygian. (Ableton's piano roll labels MIDI 36 as **C1**, one octave lower
-  than scientific pitch, so "A1 = 55 Hz" is shown as A0 in Live. Give the user MIDI numbers
-  when it matters.)
-- **Kick pitch.** Find the kick's fundamental (commonly 41–55 Hz, E1–A1). Either put the bass
-  root on the same note an octave up, or on a consonant interval (5th, minor 3rd, 6th), never
-  a few cents away from it: two near-identical low tones beat and the downbeat warbles.
+- **Tempo decides the genre.** Deep house 120–124 (modal 122), tech house 125–128 (126),
+  minimal house 124–128, deep tech 124–127, minimal techno 124–130, Berlin techno 128–138.
+  "If you're writing at 126 you're not making deep house anymore." Density that works at 124
+  clutters at 128.
+- **Key.** With chords, the bass takes the chord roots and the voicing moves with it. Without,
+  pick a root whose fundamental sits in E1–G2 (41–98 Hz). Common: A minor first, then F, G, C,
+  D minor; techno A / D / E minor and E Phrygian. Ableton labels MIDI 36 as **C1**, one octave
+  lower than scientific pitch; give MIDI numbers when it matters.
+- **Kick pitch.** Tuner on the kick's body (not the transient); labels lie. Bass root = same
+  note an octave up, or 5th / minor 3rd / 6th. Never a few cents off (beating). Repitch the kick
+  up to ±2 semitones if needed.
+- **Bass philosophy per genre.** Tech house: rolling 3–5 notes, second-loudest element. Deep
+  house: 2–4 sustained notes, felt not heard. Minimal: 1–2 percussive stabs, the gap is the
+  groove. Techno: hypnosis through sameness. Jackin' / funky: a player's line with ghosts and
+  pickups.
 
-### 2. Choose the rhythmic archetype
-Kick sits on steps 1, 5, 9, 13 of a 16-step bar. The archetypes, in rising density:
+### 2. Choose the rhythmic archetype (details in `rhythm.md`)
+Kick on steps 1, 5, 9, 13 of 16. The bass's one anchor is the downbeat; everything else lives
+between kicks ("the macro groove": bass and perc share the same accent map).
 
-1. **Pedal / sustained** (deep house): one or two long notes per bar, the kick ducks them.
-2. **Offbeat 8ths** (classic house, tech house): notes on the "and"s, steps 3-7-11-15.
-   Disco / hi-NRG lineage; kick and bass take turns so they never fight.
-3. **Syncopated / tresillo** (groovy, jackin'): accents on 1, the "and" of 2 and 4
-   (3+3+2), plus 16th pickups into the next downbeat. Rubbery, call-and-response with the drums.
-4. **Rolling 16ths** (tech house, techno): most 16ths filled from a 3-note set, kick slots
-   left empty or quiet, one slot changed per bar so it never sounds like a preset.
+1. **Pedal / sustained**: deep house, 20–50 ms portamento between long notes.
+2. **Offbeat 8ths** (3-7-11-15): classic / tech house. Four notes, then break the symmetry:
+   third note a 16th early, fourth up an octave or to the 5th. Long-then-short contrast
+   ("and" of 1 sustained, "and" of 2 punchy) is where the groove lives.
+3. **Tresillo / habanera / anticipation** (3+3+2): groovy, jackin'. Ghosts in front of notes,
+   turnaround to the 5th, pickups into the next bar.
+4. **Rolling 16ths**, two philosophies: kick slots *empty* (techno, Attack / Zen World) or tonic
+   *on* the kick and ducked (Chris Stussy map: R q q q | 5 R o R, 110 on the kick slots, 90 on
+   the "and"s, 70–80 elsewhere; downbeats 60 % gate, offbeats 90–100 %). Vary one slot per bar;
+   bar 4 ends with a chromatic walk 5 → b6 → 6 → b7 into the next tonic.
+5. **Rolling 8ths** on one pitch, 10–15 % velocity randomisation, half-step dip on beat 3.
+6. **Stab and sustain** for peak time; **slides** over a 4-bar arc (root, root, sliding 4th/5th,
+   resolve).
 
-Pick one as the *core bar*. Everything else is variation of that bar.
+### 3. Choose the notes (details in `theory.md`)
+Root / 5th / octave backbone (or root / b3 / 5th under a minor-triad stab). Natural minor by
+default; Dorian's 6th for warmth (the im7 → IV7 vamp is the Larry Heard sound); Phrygian's b2
+as a short approach for darkness. Chromatic approach notes on weak positions only. 7ths and
+9ths live in the chords, not the bass. Write the pattern first with a plain sine; "the
+difference is almost never the synth".
 
-### 3. Choose the notes
-Backbone is root, 5th, octave. Colour comes from the mode: natural minor is the default;
-Dorian's natural 6th is warmer (groovy, deep); Phrygian's b2 is the dark tech-house / techno
-trick; minor pentatonic (1 b3 4 5 b7) is the safe melodic subset. Add **chromatic approach
-notes** a semitone below or above a target on weak positions (the last 16th before beat 1 is
-the classic pickup), and the funk **b7 → octave** walk. Under m7/m9 chords the bass usually
-stays on the root or root-pedal; the 7th and 9th live in the chords, not the bass. Fewer
-distinct pitches is almost always better: Larry Heard's "Can You Feel It" is six notes.
+### 4. Shape it
+- **Velocity skeleton**: 110 kick slots / 90 "and"s / 70–80 fillers, randomised within bands;
+  ghosts 20–30 % of main, short, low-passed. Route velocity to cutoff (20–40 %).
+- **Gate**: short on downbeats, long on offbeats; sub layer never overlaps. Silence between
+  notes is the bounce.
+- **Swing**: Linn convention, 50 straight. House 54–58, rolling tech house 56–58 (MPC 16 Swing
+  58/62 template on the bass clip, kick straight), minimal 52–56 at 10–30 % Timing, jackin'
+  56–62, techno 50–54. Dense rolling lines want it; sparse offbeat lines often stay straight
+  with only the hats swung.
+- **Micro-timing**: research says a consistent whole-track offset up to ~30 ms is unnoticed,
+  while random per-note jitter *lowers* groove ratings. So: Track Delay for laid-back feel, and
+  if you nudge single notes (2–3 per bar, 5–15 ms), nudge the *same* ones every bar. Groove
+  Pool Random near zero on bass.
 
-### 4. Shape it: velocity, length, timing
-- **Velocity**: downbeats / kick-aligned 100–120, offbeats 80–100, ghosts 25–45
-  (roughly 20–30 % of the main notes). Drop every 4th hit by 20–30 % to create grouping.
-  Map velocity to filter cutoff on the synth so the accents open up.
-- **Length (gate)**: under 50 % of the step is staccato / punchy house; 100 %+ overlaps for
-  legato and slides. Short notes on downbeats, longer on offbeats is a modern tech-house
-  rule of thumb. In the sub layer never let two notes overlap.
-- **Swing**: Linn convention, 50 % = straight, 66.7 % = triplet. House 54–58 %, tech house
-  56–58 %, jackin' up to 60–65 %. Keep the kick straight and swing the bass and hats per clip.
-- **Micro-timing**: shifts of 10–40 ms are what the ear reads as "laid back" or "pushed";
-  listeners only notice bass offsets above ~30 ms. Nudge two or three off-downbeat notes a
-  few ms, not the whole clip. At 125 BPM a 16th is 120 ms.
+### 5. Phrase it
+4-bar shape inside 8-bar phrases: bar 1 full, bar 2 one slot changed, bar 3 a 30 ms anticipation
+on the last offbeat, bar 4 a fill; verse moves, drop plays bar 1 looped. Change one thing every
+8 bars. Call-and-response with the perc.
 
-### 5. Phrase it over 8 bars
-Keep the core bar stable; change something at bars 4 and 8 (octave jump on the last beat,
-pickup into the next phrase, dropped note, extra ghost). Second drop gets a variation, not a
-new line. Write call-and-response with the drums: where the bass is busy the percussion
-rests, and vice-versa.
+### 6. Lock it in Ableton (details in `ableton-workflow.md`)
+Clip Scale on; Groove Pool on the bass clip only (Timing as strength, Velocity 0 if you only
+want timing, Commit late); Operator / Wavetable / Drift with Voices 1, Glide for slides,
+velocity → filter; sidechain compressor keyed from the kick: attack 0.1–2 ms, release 80–130 ms
+at 124–126 BPM (deep house 120–180, techno 50–100), 4–7 dB, soft knee, or band-mode on the low
+band only; sine sub + mid layer high-passed 65–100 Hz; mono below 120 Hz. Live 12 shortcuts:
+Seed (pitch range a 5th, Duration 1/16–1/16, Voices 1, Density 50 %), Euclidean for tresillo
+voices, Velocity Shaper for the skeleton, Audio-to-MIDI from a percussion loop for a played
+rhythm.
 
-### 6. Lock it in Ableton
-Groove Pool (MPC 16 Swing-56/58, Timing as strength, tiny Random) on the bass clip only;
-Live 12 clip Scale so MIDI Tools stay in key; Operator/Wavetable with Voices = 1, Glide for
-slides, velocity → filter; sidechain compressor keyed from the kick, fast attack, release
-timed so the bass is back up just before the next kick; bass mono below ~120 Hz; high-pass
-any mid layer around 80–100 Hz so the sine sub owns the bottom. Details in
-`references/ableton-workflow.md`.
+## The five reasons a bass feels stiff (check in this order)
+1. All notes the same velocity. 2. All notes the same length. 3. No swing on a rolling line.
+4. Polyphonic voice (overlaps muddy the low end). 5. Sidechain missing, or so deep you hear the
+duck. "Nine times out of ten the fix is in there."
 
 ## Deliverables
 
 When the user wants a bassline, give all of these unless they ask for less:
 
-1. **A 16-step grid** per bar (see format in `references/patterns.md`), with note names,
-   MIDI numbers, velocities and gate, plus which bars vary and how.
+1. **A 16-step grid** per bar in the `patterns.md` notation, with note names, MIDI numbers,
+   velocities and gate, plus which bars vary and how.
 2. **A rendered `.mid`** from `scripts/make_bass_midi.py` saved where the user can drag it
-   into Live (project folder or a path they can open). Say the exact path.
-3. **Synth and groove settings** for Live: instrument, Voices/Glide, velocity routing,
-   Groove Pool choice and %, sidechain starting values.
-4. **Why it works**, in two or three sentences tied to the rules above (interlocking with
-   the kick, chord-tone choice, phrase shape). Avoid lectures; the user wants to make music.
+   into Live (project folder or a path they can open). Say the exact path. Prefer `--swing 50`
+   and let them add the Groove Pool template, unless they want the shuffle baked in.
+3. **Synth and groove settings** for Live: instrument, Voices / Glide, velocity routing,
+   Groove Pool template and %, sidechain starting values.
+4. **Why it works**, in two or three sentences tied to the rules above. No lectures.
 
 When the user shows an existing bassline (MIDI, screenshot description or notes), diagnose
-against the same checklist: density vs tempo, kick-slot collisions, pitch range vs kick,
-velocity flatness, gate uniformity, absence of phrase-level variation, swing mismatch with
-the hats.
+against the five-reasons list plus: density vs tempo, kick-slot collisions, pitch range vs
+kick fundamental, absence of a 4-bar shape, swing mismatch with the hats, pads or stabs
+sitting in the 80–250 Hz band where the bass movement lives.
 
 ## Example
 
 User: "tech house, 126 BPM, F minor, kick is tuned to F. I want it to roll."
 
-Response outline: rolling-16th archetype; 3-note set F1-C2-F2 (MIDI 29-36-41), kick slots
-1/5/9/13 empty, slot 16 = E1 chromatic pickup at low velocity every 4th bar; velocities 112
-on step 3 and 11, 90 elsewhere, ghosts 40 on steps 4 and 12; gate 60 % offbeats / 40 %
-others; Groove MPC 16 Swing-57 at 100 % Timing; Operator, Voices 1, saw-ish Operator B
-feeding A, velocity → filter 30 %; sidechain from kick, attack 0.1 ms, release ≈ 90 ms. Then
-run the script with `--style tech-rolling --key Fm --bpm 126 --bars 8 --swing 57`.
+Response outline: Stussy rolling map in F minor, set F1–C2–F2 (MIDI 29-36-41); tonic on the
+kick slots at 110 and 60 % gate, 5th and octave on the offbeats at 90 with 95 % gate, quiet
+tonics at 75 in between; bar 2 drops the first octave, bar 3 anticipates slot 15 by 30 ms,
+bar 4 walks C → C# → D → Eb into F. Groove MPC 16 Swing-58 on the bass clip, kick straight.
+Operator: A sine, B saw at low level, D sine an octave down, Voices 1, Glide off, filter LP24
+~200 Hz with envelope 40 %, Vel → filter 30 %. Compressor sidechained from the kick: attack
+1 ms, release 110 ms, 4:1, 5–7 dB. Then:
+`python3 scripts/make_bass_midi.py --style tech-stussy --key Fm --bpm 126 --bars 8 --swing 50 --out <project>/bass_Fm_rolling.mid`

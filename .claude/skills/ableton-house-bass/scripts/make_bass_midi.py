@@ -17,7 +17,7 @@ Grid notation (one bar = 16 tokens separated by spaces, bars separated by '|'):
     o / O    root +1 / +2 octaves     _        root -1 octave
     b2 2 b3 3 4 5 b6 6 b7 7 9        semitone offsets above the root
     x@110    velocity override        x:40     gate % override        x@110:40 both
-    x+       nudge early (humanize)   x~       nudge late
+    x+ x++   start 10 / 20 ms early     x~ x~~   start 10 / 20 ms late
 
 Variation bars: --vary makes bar 4 and bar 8 of each 8-bar phrase differ (octave on the
 last offbeat in bar 4, pickup and dropped note in bar 8) when a single-bar pattern is given.
@@ -60,10 +60,58 @@ STYLES = {
         122, 52,
         "R - - - . . R - . . . . R - . .",
     ),
+    "deep-m9-three16": (
+        "Deep house: three 16ths at the end of the bar under m9 chords (MusicRadar); transpose per chord",
+        122, 50,
+        "R . . . . . . . . . . . R R R .",
+    ),
     "deep-sixnote": (
         "Deep house: bouncing 4-pitch line in the 'Can You Feel It' spirit, bass as lead (2-bar loop)",
         120, 50,
         "R . . R . . b7 . . . 5 . . . R . | R . . R . . b7 . . . 5 . . b3 . .",
+    ),
+    "tech-sustain-punch": (
+        "Tech house: sustained note on the 'and' of 1, short punch on the 'and' of 2 (Producer School pattern 1)",
+        128, 56,
+        ". . R - - - R:30 . . . R - . . o:40 .",
+    ),
+    "tech-lake": (
+        "Tech house: Chris Lake-style, notes on the 'and' of 2 and 4 only, slide between them",
+        124, 50,
+        ". . . . . . R - . . . . . . 5 -",
+    ),
+    "tech-stussy": (
+        "Tech house: Chris Stussy rolling 3-note slot map with the 4-bar shape (tonic on kick, ducked)",
+        126, 57,
+        "R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90 R@78 R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90 R@78 | "
+        "R:60@110 R@75 R@75 R@75 5:95@78 R@78 R:95@90 R@78 R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90 R@78 | "
+        "R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90 R@78 R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90+++ R@78 | "
+        "R:60@110 R@75 R@75 R@75 5:95@78 R@78 o:95@90 R@78 R:60@110 R@75 R@75 R@75 5@85 b6@88 6@92 b7@96",
+    ),
+    "tech-stussy-4kick": (
+        "Tech house: rolling 3-note with the tonic on all four kick slots (cell R q q 5 | R q o R per two beats)",
+        126, 57,
+        "R:60@110 R@75 R@75 5:95@80 R:60@110 R@75 o:95@90 R@78 R:60@110 R@75 R@75 5:95@80 R:60@110 R@75 o:95@90 R@78",
+    ),
+    "tech-cloonee": (
+        "Tech house: rolling root / b3 / 5th variant (Cloonee), tonic on kick",
+        126, 57,
+        "R:60@110 R@75 R@75 R@75 b3:95@78 R@78 5:95@90 R@78 R:60@110 R@75 R@75 R@75 b3:95@78 R@78 5:95@90 R@78",
+    ),
+    "tech-rolling8": (
+        "Tech house: rolling 8ths on one pitch, half-step dip on beat 3 (Producer School pattern 2)",
+        128, 52,
+        "R . R . R . R . b7@95 . b7@95 . R . R .",
+    ),
+    "tech-stab-sustain": (
+        "Tech house: stab on the kick, sustain across beats 2-3 (Producer School pattern 5)",
+        128, 50,
+        "R:40@115 . . . R - - - - - - . . . . .",
+    ),
+    "tech-full16": (
+        "Tech house: every 16th filled, velocities pulled down, sidechain does the shaping",
+        126, 56,
+        "R@80 R@70 R@75 R@70 R@80 R@70 R@75 R@70 R@80 R@70 R@75 R@70 R@80 R@70 R@75 R@70",
     ),
     "tech-offbeat": (
         "Tech house: offbeat 8ths with octave + short pickup on the last beat (124-128 BPM)",
@@ -71,12 +119,12 @@ STYLES = {
         ". . R . . . R . . . R . . . o R:30@60",
     ),
     "tech-stumble": (
-        "Tech house: offbeat 8ths with the second note pulled a 16th early",
-        126, 57,
-        ". . R . . R . . . . R . . . R .",
+        "Tech house: offbeat 8ths with the third note pulled a 16th early (Myloops)",
+        126, 54,
+        ". . R . . . R . . R . . . . R .",
     ),
     "tech-rolling": (
-        "Tech house / minimal: rolling 16ths from root-5th-octave, kick slots empty, one slot varies per bar",
+        "Tech house / techno: rolling 16ths from root-5th-octave, kick slots EMPTY (Attack / Zen World), one slot varies per bar",
         126, 57,
         ". R R 5 . R R o . R R 5 . R R o | . R R 5 . R o o . R R 5 . R R . | "
         ". R R 5 . R R o . R 5 5 . R R o | . R R 5 . R R o . R R 5 . R o b7@70",
@@ -95,6 +143,16 @@ STYLES = {
         "Tech house: offbeat 8ths with a Phrygian b2 pickup into the next bar",
         126, 57,
         ". . R . . . R . . . R . . . R b2@65:40",
+    ),
+    "groovy-habanera": (
+        "Groovy: habanera (tresillo plus beat 3) with b7 pickup",
+        125, 58,
+        "R . . . . . 5 . R . . . R . . b7@70",
+    ),
+    "groovy-funk-kick": (
+        "Groovy / funky: bass copies a funk kick's 16ths, D7-style arpeggio, turnaround to the 5th (TalkingBass)",
+        124, 58,
+        "R . 5 . . . b7 . R . 5 . . b7 . 5",
     ),
     "groovy-tresillo": (
         "Groovy / jackin': 3+3+2 tresillo accents with ghost notes and a b7 pickup (122-128 BPM)",
@@ -121,6 +179,16 @@ STYLES = {
         132, 51,
         ". R@50 R@127 R@75 . R@50 R@127 R@75 . R@50 R@127 R@75 . R@50 R@127 R@75",
     ),
+    "techno-bounce": (
+        "Techno: rolling with one octave bounce and a rising end of loop (Zen World / Fazemag)",
+        130, 51,
+        ". R R R . R o R . R R R . R 5 b7",
+    ),
+    "acid-sparse": (
+        "Acid: 7 triggers with real rests, two accents, one octave jump (303box workflow); add glide in the synth",
+        128, 52,
+        "R@120 . . R . . o@110 . . R . R . . b7 .",
+    ),
     "techno-offbeat": (
         "Techno: offbeat sub on the 'and's",
         132, 50,
@@ -130,14 +198,26 @@ STYLES = {
 
 # Default velocities by step position (zero-based)
 def default_velocity(step: int) -> int:
+    """Producer School skeleton: loud on the kick slots, medium on the 'and's, quiet elsewhere."""
     if step in KICK_STEPS:
         return 110
     if step % 4 == 2:          # offbeat 8ths (steps 3,7,11,15 one-based)
-        return 100
-    return 88
+        return 90
+    return 78
 
-DEFAULT_GATE = 65
-GHOST_VELOCITY = 38
+
+def default_gate(step: int, base: int, flat: bool) -> int:
+    """Short on the kick slots (the sidechain cuts them anyway), long on the offbeat 8ths."""
+    if flat:
+        return base
+    if step in KICK_STEPS:
+        return min(base, 60)
+    if step % 4 == 2:
+        return max(base, 95)
+    return base
+
+DEFAULT_GATE = 70
+GHOST_VELOCITY = 36
 GHOST_GATE = 20
 
 
@@ -167,10 +247,10 @@ def parse_token(raw: str) -> Token:
     if s == "-":
         return Token("tie")
     nudge = 0
-    if s.endswith("+"):
-        nudge, s = -1, s[:-1]
-    elif s.endswith("~"):
-        nudge, s = 1, s[:-1]
+    while s.endswith("+"):
+        nudge, s = nudge - 1, s[:-1]
+    while s.endswith("~"):
+        nudge, s = nudge + 1, s[:-1]
     velocity = gate = None
     # split overrides: body[@vel][:gate] in any order
     body = ""
@@ -269,7 +349,7 @@ def apply_variations(bars: List[List[Token]], total_bars: int) -> List[List[Toke
 
 
 def render(bars: List[List[Token]], root: int, swing: float, gate_default: int,
-           humanize_ms: float, bpm: float, rng: random.Random) -> List[Note]:
+           humanize_ms: float, bpm: float, rng: random.Random, flat_gate: bool = False) -> List[Note]:
     notes: List[Note] = []
     ms_per_tick = 60000.0 / bpm / PPQ
     eighth = STEP * 2
@@ -288,11 +368,11 @@ def render(bars: List[List[Token]], root: int, swing: float, gate_default: int,
                 continue
             start = grid + (swing_delay if step_i % 2 == 1 else 0)
             vel = tok.velocity if tok.velocity is not None else default_velocity(step_i)
-            gate = tok.gate if tok.gate is not None else gate_default
+            gate = tok.gate if tok.gate is not None else default_gate(step_i, gate_default, flat_gate)
             length = max(10, int(STEP * gate / 100.0))
             nudge = 0
             if tok.nudge:
-                nudge = tok.nudge * int(round(10.0 / ms_per_tick))  # 10 ms
+                nudge = tok.nudge * int(round(10.0 / ms_per_tick))  # 10 ms per +/~
             elif humanize_ms > 0 and step_i not in KICK_STEPS:
                 nudge = int(round(rng.uniform(-humanize_ms, humanize_ms) / ms_per_tick))
             n = Note(start, length, root + tok.semitones, vel, nudge)
@@ -380,8 +460,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--bpm", type=float, help="tempo written to the file (default per style, else 125)")
     ap.add_argument("--bars", type=int, default=8, help="bars to render (default 8)")
     ap.add_argument("--swing", type=float, help="MPC-style swing %% baked into even 16ths; 50 = straight. Default per style. Prefer 50 + Groove Pool")
-    ap.add_argument("--gate", type=int, default=DEFAULT_GATE, help="default note length as %% of a 16th (default 65)")
-    ap.add_argument("--humanize", type=float, default=0.0, help="random nudge in ms for non-kick steps (try 5-10)")
+    ap.add_argument("--gate", type=int, default=DEFAULT_GATE, help="base note length as %% of a 16th (default 70; kick slots 60, offbeat 8ths 95 unless --flat-gate)")
+    ap.add_argument("--humanize", type=float, default=0.0, help="random nudge in ms for non-kick steps (research says keep this low or zero; try 3-6)")
+    ap.add_argument("--flat-gate", action="store_true", help="use --gate for every step instead of short-on-kick / long-on-offbeat")
     ap.add_argument("--no-vary", action="store_true", help="repeat a single-bar pattern verbatim (no bar 4/8 variation)")
     ap.add_argument("--seed", type=int, default=7, help="random seed for --humanize")
     ap.add_argument("--out", default="bass.mid", help="output .mid path")
@@ -422,7 +503,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     else:
         full = apply_variations(bars, args.bars)
     rng = random.Random(args.seed)
-    notes = render(full, root, swing, args.gate, args.humanize, bpm, rng)
+    notes = render(full, root, swing, args.gate, args.humanize, bpm, rng, args.flat_gate)
     write_midi(args.out, notes, bpm, args.bars * STEPS_PER_BAR * STEP, f"{style_name} bass {args.key}")
 
     if not args.quiet:

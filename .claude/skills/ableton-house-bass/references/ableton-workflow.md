@@ -1,80 +1,134 @@
 # Ableton Live workflow for basslines
 
 ## Clip setup (Live 12)
-1. Set the clip's **Scale** (clip view, Scale toggle, pick root and mode). MIDI Tools then
-   work in scale degrees instead of semitones, and Fold shows only in-key notes.
-2. Grid 1/16. Draw the core bar, duplicate to 4 or 8 bars (Ctrl/Cmd+D), then edit the
-   variation bars by hand.
-3. Velocity lane: drag accents; use the Velocity transformation (Shape / Ramp / Random) for
-   the grouping contour. Chance lane for ghost notes that only play sometimes.
-4. Note length: shorten with the Note Length MIDI effect (Gate %) or by dragging ends; gate
-   above 100 % overlaps notes for legato / glide.
+1. Set the Set's key and the clip's **Scale** (Scale Mode). MIDI Tools then work in scale
+   degrees instead of semitones, Fold shows only in-key notes, and generators follow the key.
+2. Grid 1/16. Draw the core bar, duplicate to 4 or 8 bars (Ctrl/Cmd+D), edit the variation bars.
+3. Velocity lane for the skeleton (110 / 90 / 70–80); Chance lane for ghost notes that only
+   sometimes play.
+4. Note length: drag ends, or the Note Length MIDI effect (Gate %: 50 % halves, 200 % doubles,
+   above 100 % overlaps for legato).
+5. Write with a plain sound first (sine or a simple preset); swap the patch once the pattern
+   grooves.
 
-## MIDI Tools (Live 12 Generate / Transform panels)
-- **Seed** (generator): pitch range narrow (one octave around the root, or a 3-note range),
-  Duration both sliders 1/16, Voices 1, Density around 50 %, Generate repeatedly; keep the
-  2–3 notes you like and edit the rest. This is the fastest route to a rolling line.
-- **Rhythm** (generator): pattern heuristics over a selection; good for percussive minimal
-  bass hits.
-- **Euclidean** (generator): up to 4 voices; 5-in-16 or 7-in-16 pulses give tresillo-family
-  syncopation instantly.
-- **Ornament** (transformation): grace notes / flams before selected notes = chromatic
-  pickups, scale-aware.
-- **Connect**: fills the gap between two notes with scale steps = walk-ups.
-- **Time Warp**: tempo curve across a selection; tiny amounts push or drag a phrase.
-- **Strum**: offsets stacked notes; irrelevant for mono bass except to create slide pairs.
-- Arpeggiator (MIDI effect) with Gate and swing-like rates is an older way to get rolling
-  16ths with length control.
+## MIDI Tools (Clip View, Transform and Generate panels)
+General behaviour from the manual and the Attack guide: generators fill the **Loop Brace**,
+not the whole clip, so set the brace to the length you want (handy for generating a fill in
+bars 7–8 only). **Auto** on regenerates on every parameter change; off waits for Generate.
+Generated notes stay selected and coloured; **deselect them** before the next generation or
+they are replaced; grey notes are fixed. Alt/Option-click the piano ruler to pick a pitch or
+range for Seed / Shape.
 
-## Groove Pool
-- Open with the Groove Pool button (bottom-left of browser). Drag `MPC 16 Swing-54/56/58/60`
-  (Core Library > Grooves > MPC) onto the **bass clip** only. Keep the kick straight.
-- **Base** 1/16 (the resolution the groove is measured against). **Quantize** 0–100 % first
-  snaps the clip to Base before applying the groove. **Timing** = strength of the groove's
-  timing (start 100 %, back off to 70–80 % if too drunk). **Random** 2–6 % for human jitter
-  (each voice is randomised independently). **Velocity** applies the groove's velocity pattern
-  (-100 to +100; negative inverts). **Global Amount** scales all three.
-- Right-click an audio loop → **Extract Groove** to pull timing from a disco / funk sample,
-  then apply it to the bass clip.
-- **Commit** (clip view) writes the groove into the notes when you want to edit the result.
+Generators:
+- **Seed**: random notes within pitch, duration and velocity ranges; Voices (max simultaneous)
+  and Density (% of the range populated). Bass recipe (Attack / MusicRadar): narrow pitch range
+  (a 4th or 5th around the root, or merge the handles for one pitch), Duration 1/16–1/16,
+  Velocity 100–110 or a range for variation, Voices 1, Density ~50 %, Generate until something
+  works, keep 2–3 notes and edit the rest. Preset used in the Attack example: Wavetable "Basic
+  FM House Bass", Tri + Sub.
+- **Rhythm**: Steps, Pattern (placement), Density (number of notes), Step Duration, Velocity
+  and Accent with Accent Frequency / Offset, Shift, Split %. Works on one pitch at a time; good
+  for a single-pitch rolling or ghost layer.
+- **Euclidean** (Max for Live): up to 4 voices, each with its own pitch and velocity; Steps,
+  Density (pulses), Division, per-voice Rotation and a dice. 5-in-16 or 3-in-8 gives
+  tresillo-family syncopation instantly; set the voices to root / 5th / octave.
+- **Shape**: monophonic sequence following a drawn or preset contour; Rate, Tie (probability a
+  note extends to the next), Density, Jitter.
+- **Stacks**: chords from a root, type and inversion; build a progression from your bass roots.
+
+Transformations useful for bass:
+- **Velocity Shaper** (M4L): draw an envelope over the selection, Min / Max velocity, Loop and
+  Rotate / Division to repeat it per beat. Fastest way to get the 110 / 90 / 75 skeleton.
+- **Span**: legato / tenuto / staccato articulation for the whole selection (staccato = half the
+  smallest gap), with Offset and Variation.
+- **Ornament**: Flam or Grace Notes before selected notes; Grace pitch High / Low / Same (a
+  semitone or scale degree) and a relative velocity. Scale-aware chromatic pickups.
+- **Connect**: fills gaps between notes with interpolated notes; Spread (pitch range) and
+  Density. Walk-ups between two roots.
+- **Recombine**: permutes Position, Pitch, Duration or Velocity across the selection: shuffles a
+  riff while keeping its shape (MusicRadar).
+- **Arpeggiate**: Rate and Gate; Distance in scale degrees. Old-school route to rolling 16ths
+  with length control.
+- **Time Warp**: speed curve over a selection; tiny amounts drag or push a phrase. **Strum**
+  offsets stacked notes; **Chop** splits long notes into patterns with gaps; **Quantize**.
+- **Glissando** / **LFO** are MPE tools for pitch-bend slides when the instrument supports MPE.
+
+Other Live tools: the **Sequencers** pack (SQ Sequencer with scale mode and dice for pitch,
+rhythm, length, velocity) and the free **Sting** Max for Live acid generator (MusicRadar).
+
+## Audio to MIDI bassline (MusicRadar / Pops Roberts)
+Loop the drums (Cmd+L), audition percussion loops in the browser for one that counters the
+beat, drag it in, right-click → **Convert Drums to New MIDI Track**, replace the instrument
+with a bass, then edit the pitches to chord tones. The rhythm is inherited from a played loop.
+
+## Groove Pool (manual section 14)
+- Open: browser drop-down or **Ctrl+Alt+6 / Cmd+Option+6**. Drag a groove from Core Library >
+  Grooves onto the **bass clip** (not the kick). Hot-Swap next to the Clip Groove chooser
+  steps through grooves while the clip plays. Names: `Swing 16-55` (Swing folder), `MPC 16
+  Swing-58`, `MPC 16 Swing-62`, `MPC 16 Swing-73`, `MPC 16 Double Up-55` (moves all 16ths and
+  changes velocity).
+- **Base**: resolution the groove is measured against (1/16 for 16th swing). Notes in the
+  groove file that sit on the grid do not move, so neither do the matching clip notes.
+- **Quantize**: straight quantize applied *before* the groove (100 % snaps to Base).
+- **Timing**: how much the groove's timing affects the clip. Producer School runs MPC 16
+  Swing 58/62 at full; Studio Brootle runs Swing-73 at 20 %; IQSounds suggests 10–30 % for
+  minimal.
+- **Random**: timing jitter, different per voice. Keep near zero on bass (research: random
+  per-note displacement lowers groove ratings).
+- **Velocity**: -100 to +100, negative inverts. Set 0 when you only want timing.
+- **Global Amount**: scales all three, up to 130 %, also in the Control Bar.
+- **Commit** writes the groove into the notes and sets the clip groove to None; do it late, once
+  you have stopped auditioning (then you can see and edit what it did).
+- **Extract Groove**: drag any audio or MIDI clip to the Groove Pool or use the clip context
+  menu; only the playing portion is used. Pull timing from a funk or disco loop.
+- Edit a groove file: drag it into a MIDI track, edit as a clip, extract again.
+- Real-time quantize: Timing / Random / Velocity at 0, Quantize and Base to taste.
+- A/B by bypassing: if the groove is audible only in solo it may be too subtle; if the bypassed
+  version suddenly sounds cleaner and harder, the swing is too strong. Test at low volume.
+- Track Delay (the D button bottom right) shifts a whole channel: -9 ms clap early, +5 ms late
+  (Attack). A consistent whole-track offset is the research-safe way to lay the bass back.
 
 ## Instruments
-- **Operator**: Voices = 1 (global display). Glide: G switch in the pitch display, Time
-  30–80 ms; glide triggers when notes overlap. Filter: Freq modulated by velocity (Vel %
-  20–40) and by the filter envelope. Sine on A for sub; saw / square on B for mids. Envelopes
-  do not retrigger on overlapping notes when Voices = 1.
-- **Wavetable**: Mono (Voices 1), Glide knob; Mod Matrix Velocity → Amp modest (20–30 %),
-  Velocity → Filter 1 Freq smaller (10–25 %). Basic Shapes saw with Filter 1 LP 24.
-- **Analog**: Osc 1 saw/pulse, Osc 2 sub sine an octave down, Unison off for sub, Legato on,
-  Glide (Slide) for 101/Juno slides.
-- **Drift / Meld**: Drift's Mono + Legato and velocity to cutoff are a fast tech-house bass.
+- **Operator**: Voices = 1; Glide (G) in the pitch display with Time 30–80 ms, triggered by
+  overlapping notes; envelopes do not retrigger on legato. Per-oscillator **Vel** (on a
+  modulator it controls FM amount, so harder notes get brighter), **Osc < Vel**, **Time <
+  Vel** (envelope segments faster on hard notes), **Key** tracking. Filter Freq / Res with 12
+  or 24 dB slopes, its own envelope with curves, and Sync mode that repeats the filter envelope
+  every 1/16 for rhythmic movement. A sine on A, a saw on B at low level and a sine an octave
+  down on D is the Stussy patch in Operator terms.
+- **Wavetable**: Mono, Glide; Mod Matrix Velocity → Amp 20–30 %, Velocity → Filter 1 Freq
+  10–25 %, Env 2 → Filter 1 Freq ~40 % for the "talking" attack; Basic Shapes saw + Sub.
+- **Analog**: saw or pulse, Osc 2 sub sine an octave down, Legato on, Glide for 101 / Juno slides.
+- **Drift**: Mono + Legato, velocity to cutoff; quickest tech-house bass.
+- **Simpler** on a kick sample for the techno sub / rumble.
 
 ## Kick / bass relationship
-- Find the kick's fundamental (Spectrum, or Tuner on the kick track). Bass root = same note an
-  octave up, or a consonant interval (5th, minor 3rd, 6th). Avoid a few cents away (beating).
-- **Sidechain**: Compressor on the bass, Sidechain on, Audio From = kick track (pre-FX),
-  Ratio 4:1+, Attack 0.1–1 ms, Release so the gain is back to 0 dB just before the next kick
-  (60–150 ms depending on style and tempo), 3–8 dB of gain reduction. For deep house pump
-  softly; for tech house / techno duck tighter.
-- **Surgical alternative**: dynamic EQ on the bass at the kick's fundamental, or a multiband
-  sidechain only below ~120 Hz, so the mids keep the groove.
-- **Layering**: sine sub (compressed so notes are equal, then sidechained) + mid layer
-  high-passed 80–100 Hz. Remove the sub from the mid layer before adding the sine (HP at
-  around 80 Hz) or they clash. Check phase if both layers are sines.
-- **Mono** below ~120 Hz (Utility, Bass Mono) on the bass group.
-- Overlapping notes in the sub layer: fix with Note Length or by shortening in the clip.
+- Tuner on the kick (read the body, not the transient) or an EQ sweep for the peak. Bass root =
+  same note an octave up, or 5th / minor 3rd / 6th. Never a few cents off.
+- **Sidechain compressor** on the bass: Sidechain on, Audio From kick (pre-FX), Ratio 4:1–6:1,
+  Attack 0.1–2 ms, Release 80–130 ms at 124–126 BPM (deep house 120–180 ms, techno 50–100 ms),
+  4–7 dB of gain reduction, soft knee. Watch the GR meter breathe; if it is still down when the
+  next kick arrives, shorten the release.
+- Alternatives: multiband / band-mode sidechain on the low band only so the mids keep the
+  groove (Niek); dynamic EQ at the kick fundamental; LFO Tool / ShaperBox / Kickstart curves.
+- **Layers**: sine sub (compressed so notes are equal, then sidechained) + mid layer
+  high-passed 65–100 Hz. Remove the sub from the mid layer before adding the sine or they
+  clash; check phase if both are sines.
+- **Mono** below ~120 Hz (Utility Bass Mono or a Utility in mono on the bass group); keep the
+  bass out of the drum bus so its sidechain and EQ stay independent.
+- Overlapping notes in the sub layer: Note Length or shorten in the clip.
 
 ## Checking the result
-1. Solo kick + bass. Does the kick still hit on every downbeat? If not: kick-slot
-   collision, shared fundamental, or sidechain too slow.
-2. Mute the kick. Does the bass alone imply the kick's position (offbeats, pickups)? Good.
-3. Loop 8 bars. Can you point to bars 4 and 8? If not, add the variation.
-4. A/B the Groove Pool on/off. The groove should be felt, not heard as drunkenness.
-5. Export MIDI (File > Export MIDI Clip) or drag the clip to a folder to share.
+1. Solo kick + bass: does the kick still hit on every downbeat?
+2. Mute the kick: does the bass alone imply where the kick is?
+3. Loop 8 bars: can you point to bars 4 and 8?
+4. Bypass the groove: felt, not heard?
+5. Bypass the sidechain: is the duck shaping or hiding the line?
+6. Low volume and mono: still bouncing?
+7. Export: File > Export MIDI Clip, or drag the clip to a folder.
 
 ## Importing the generated .mid
-Drag `*.mid` from the Finder / Explorer onto an empty MIDI track slot. Live creates a clip at
-the file's tempo; the clip ignores the tempo but keeps notes, velocities and lengths. Set
-the clip Scale and add the groove afterwards; the script can bake swing in, but the Groove
-Pool is editable later and the script's swing is not. Prefer `--swing 50` + Groove Pool unless
-the user wants a fixed shuffle in the file.
+Drag the `.mid` onto an empty MIDI track slot. Live keeps notes, velocities and lengths and
+ignores the file tempo. Set the clip Scale and add the groove afterwards. Prefer rendering with
+`--swing 50` and applying the Groove Pool in Live (editable); bake swing into the file only when
+the user wants a fixed shuffle.

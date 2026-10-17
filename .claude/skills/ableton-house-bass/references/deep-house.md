@@ -1,42 +1,59 @@
 # Deep house bass
 
-**Frame:** 118–124 BPM. Keys A minor, F minor, G minor. Mood: warm, subby, patient. The
-bass is often the *lead*: Larry Heard's "Can You Feel It" (Juno-60 + TR-909, nothing else)
-is a six-note, bouncing bassline that carries the whole record.
+**Frame.** 120–124 BPM, modal 122 (classic 118–122, "if you're writing at 126 you're not
+making deep house anymore"). Keys A, F, G minor (modern), A / D minor (classic), D / G / C minor
+(Afro). Drum bus medium: closed hats on 8ths not 16ths, open hat on the offbeats, kick softer
+with a longer 100–150 ms tail, hats swung 55–60 % while the kick stays straight.
+
+**Bass philosophy.** "Subby and sustained. 2 to 4 notes over the bar with long sustained
+sections between movements. The bass is felt rather than heard prominently" (Producer School).
+"Deep house bass rolls, not stabs" (Beatkey). Larry Heard's "Can You Feel It": Juno-60 and
+TR-909, one take, "a gloriously gooey six note bassline" carrying the whole record. Kerri
+Chandler: the bassline is the groove; he laid down bass and a simple organ first and played
+the song over them.
+
+Reference tracks: Black Coffee "We Dance Again", Themba "Modern Africa", Lane 8 "Brightest
+Lights", &ME "After Dark", Adam Port "The Power", Mr. Fingers "Can You Feel It", MAW "To Be In
+Love", Larse mix of Candi Staton "Hallelujah Anyway" (two-note offbeat bass).
 
 ## Rhythm
-- Archetype 1 (pedal / sustained) or a sparse archetype 2 (two or three offbeats per bar).
-- Fewer notes than any other style here; movement comes from the m7 / m9 chords, the
-  filter and the velocity, not from 16ths.
-- Bass usually straight; swing lives in the hats (52–56 % on the hat clip).
-- A common modern deep-house line: root on beat 1 held to the "and" of 2, root again on the
-  "and" of 3, octave or 5th on the "a" of 4 as pickup.
+Pedal / sustained (archetype 1) or a sparse offbeat (archetype 2) with two or three notes per
+bar. Movement comes from the m7 / m9 chords, the filter and the velocity, not from 16ths.
 
 ```
 step:  1  2  3  4 | 5  6  7  8 | 9 10 11 12 | 13 14 15 16
-bass:  R  -  -  - | -  -  .  . | .  .  R  -  |  .  .  .  5     (R held 6 steps)
-vel:  110            .           95              70
+D1:    R  -  -  - | -  -  .  . | .  .  R  -  |  .  .  .  5     root held, 5th pickup
+D2:    R  -  -  - | .  .  R  - | .  .  .  .  |  R  -  .  .     two-note sway
+D3:    R  .  .  R | .  . b7  . | .  .  5  .  |  .  .  R  .     bouncing lead-bass (2-bar loop; bar 2 ends b3)
 ```
+Stealify's method: start with the root on every beat, then move some notes to the offbeats,
+add octave leaps, leave rests, apply swing. MusicRadar's m9 example runs the bass as three
+16th notes per bar under each chord.
 
 ## Notes
-- Bass = chord roots. Chords are m7 / m9 (C–Eb–G–Bb–D for Cm9); when the chord moves, the
-  bass moves to its root and the voicing moves with it.
-- Root pedal under a changing progression is the signature deep-house tension device.
-- Passing 5th and octave as the only decorations; a chromatic pickup once per 8 bars.
+- Bass = chord roots; the voicing moves with it (Cm9 → Am9 → Abm9 over bass C, A, Ab).
+- Passing tones on the 5th and octave only; a chromatic pickup once per 8 bars.
+- Dorian vamp im7 → IV7 (Am7 → D7) for the Heard sound; natural minor im7 → IVm7 (Am7 → Dm7)
+  for melancholy. Gospel lift im7 → bVImaj7 → bVII7 with the bass walking F → G.
+- Root pedal under a changing progression is the signature tension device; one Am9 for four
+  bars with filter automation is a whole deep-tech loop.
 - Portamento 20–50 ms between adjacent notes for the "gooey" feel.
 
-## Sound (for the settings the user will ask about)
-- Sine or lightly filtered saw / triangle: Operator (sine A + quiet saw B), Analog, Wavetable
-  "Basic Shapes". Juno / 101-style with chorus for the mid layer; keep the chorus off the sub.
-- Layer: sine sub below ~100 Hz + a mid layer high-passed around 80–100 Hz. Compress the sub so
-  every note sits at the same level, then sidechain it to the kick.
-- Gentle sidechain: attack 1–5 ms, release 100–150 ms, 3–6 dB of ducking. Deep house pumps
-  softly.
-- Everything below ~120 Hz mono, bass and kick centred.
+## Sound
+- Two layers: a pure sine **sub** following the roots below ~80 Hz, and a **mid layer** of
+  filtered saw or square with portamento playing the root / 5th / octave movement above 80 Hz.
+  Juno / 101 style with chorus on the mid layer only.
+- Sidechain both layers: attack 1 ms, release 120–180 ms (sub 150 ms), ratio 4:1, 4–6 dB.
+  Deep house pumps softly but "the pumping bass groove is non-negotiable".
+- Live: Operator sine A (+ quiet saw B) or Wavetable Basic Shapes; Analog for the Juno layer
+  with Legato and Glide.
+- Rhodes / chords high-passed at 200 Hz; everything below ~120 Hz mono, kick and bass centred.
 
 ## Diagnosis checklist
-- Too many notes → thin it to roots + one pickup.
-- Static → root pedal with chords moving, or move the pickup pitch every 4 bars.
-- Mud → 7ths/9ths are in the bass octave; move them to the chord an octave up.
-- Loses weight on the downbeat → sidechain too deep or the kick fundamental equals the bass
-  fundamental; octave the bass up or retune the kick.
+- Too many notes → thin to roots plus one pickup; "the bass is not trying to be a rhythmic
+  element".
+- Static → root pedal with chords moving, or change the pickup pitch every 4 bars.
+- Mud → 7ths / 9ths in the bass octave; keep them in the chord an octave up, or thin the chord.
+- Loses weight on the downbeat → sidechain too deep, or kick and bass share a fundamental;
+  octave the bass up or retune the kick.
+- Sounds like tech house → hats on 16ths, tempo 126, bass rolling. Pull all three back.

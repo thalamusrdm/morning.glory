@@ -1,64 +1,59 @@
-# Sources consulted (October 2026)
+# Sources (read in full, October 2026)
 
-Web research was done through search summaries; direct page fetches were blocked in the
-research environment, so quotes are paraphrased from search excerpts. Percentages and ms
-values are producer rules of thumb, not standards, unless marked as research.
+All pages below were downloaded and read in full after the environment's network policy was
+opened; one (KVR forum thread on disco bass) returned 403 and is cited from a search excerpt.
+Percentages and millisecond values are producer practice unless marked as research.
 
-## Theory and harmony
-- StudyBass, "Roots and Fifths" and "Chromatic Approach Notes" — https://www.studybass.com/lessons/common-bass-patterns/roots-and-fifths/ , https://www.studybass.com/lessons/common-bass-patterns/chromatic-approach-notes/
-- Yamaha, "The Importance of Roots, Fifths and Octaves" — https://hub.yamaha.com/guitars/bass/the-importance-of-roots-fifths-and-octaves-in-bass-playing/
+## Tech house, deep tech, minimal
+- The Producer School: "5 Tech House Bass Patterns Every Producer Needs to Master"; "Building a Rolling Bassline Like Chris Stussy"; "Master Modern Tech House Bass Lines" (Niek); "Tech House vs Deep House vs Minimal" — https://theproducerschool.com/blogs/featured-blogs/
+- Myloops, "How to Build a Tech House Groove That Actually Swings" — https://www.myloops.net/how-to-create-a-tech-house-groove
+- IQSounds, "Minimal Tech House Swing Settings in Ableton" — https://iqsounds.com/blogs/news/minimal-tech-house-swing-settings-ableton
+- Sample Focus, "Make Tech House Like Chris Lake" — https://blog.samplefocus.com/blog/make-tech-house-track-chris-lake/
+- Finish More Music, "Deep Tech Bass Lines (Lightning Fast)" (sampling sub lines) — https://finishmoremusic.com/deep-tech-bass-lines-lightning-fast/
+- Splice, "How to Write a Bassline for Different Genres" — https://splice.com/blog/how-to-make-basslines/
+
+## Deep house
+- Beatkey, "How to Make Deep House Music" — https://beatkey.app/how-to-make-deep-house-music
+- Stealify Sounds, "Deep House Bassline Tutorial Essentials" — https://stealifysounds.com/blogs/news/elevate-your-tracks-deep-house-bassline-tutorial-essentials
+- Lessons In Live, "How to Make a Deep House Groove in Ableton Live" — https://www.lessonsinlive.com/blog/how-to-make-a-house-groove-in-ableton-live/
 - Attack Magazine, "Passing Notes: Deep House Chords" — https://www.attackmagazine.com/technique/passing-notes/passing-notes-deep-house-chords/
-- MusicRadar, "How to create deep house minor ninth chords" — https://www.musicradar.com/how-to/how-to-create-deep-house-minor-ninth-chords
-- Mixed In Key, "House music chords" — https://mixedinkey.com/captain-plugins/wiki/house-music-chords/
-- Theory Helper, "Best scales for techno" — https://www.theoryhelper.com/genres/techno/scales
-- F9 Audio, "Using the Phrygian scale with tech house" — https://www.f9-audio.com/en-us/blogs/tutorials/do-you-know-this-trick-for-tech-melodic-house-melodies-phrygian-house
-- Splice, "How to write a bassline for different genres" — https://splice.com/blog/how-to-make-basslines/
-- Greengo Music, "Musical key by genre" — https://greengomusic.com/blog/musical-key-by-genre-complete-reference.html
-- TalkingBass, approach notes / funky riff lessons — https://www.talkingbass.net/approach-notes/ , https://www.talkingbass.net/how-to-build-a-funky-bass-line/
-- Audiofanzine, "Pedal and ostinato in the modal system" — https://en.audiofanzine.com/music-theory/editorial/articles/pedal-and-ostinato-in-the-modal-system.html
-- Wikipedia: Tresillo, Tumbao, Syncopation, Four on the floor, Deep house, Funky house, Acid house
+- MusicRadar / Computer Music, "How to create deep house minor ninth chords" — https://www.musicradar.com/how-to/how-to-create-deep-house-minor-ninth-chords
+- VICE / Thump, Larry Heard on "Can You Feel It" — https://www.vice.com/en/article/larry-heard-can-you-feel-it-making-of/
+- Red Bull Music Academy, Kerri Chandler lecture (2005) — https://www.redbullmusicacademy.com/lectures/kerri-chandler-a-basement-a-red-light-and-a-feeling/
 
-## Rhythm, swing, velocity, length
-- Attack Magazine, "Jack Your Tracks With Swing" and "DAW & Drum Machine Swing" — https://www.attackmagazine.com/technique/tutorials/jack-your-tracks-with-swing/ , https://www.attackmagazine.com/technique/passing-notes/daw-drum-machine-swing/2/
-- Attack Magazine, "Low-End Theory: Eight Common Bassline Styles" — https://www.attackmagazine.com/technique/tutorials/low-end-theory-exploring-eight-common-bassline-styles/
-- The Producer School, "5 Tech House Bass Patterns", "Master Modern Tech House Bass Lines", "Building a Rolling Bassline Like Chris Stussy", "Tech House vs Deep House vs Minimal" — https://theproducerschool.com/blogs/featured-blogs/
-- Songen, "How to add groove to any beat" — https://songen.app/blog/how-to-add-groove-to-any-beat/
-- Myloops, "How to build a tech house groove that actually swings" — https://www.myloops.net/how-to-create-a-tech-house-groove
-- Padwolf, "MPC swing explained"; Audeobox, "MPC drum programming" — https://padwolf.app/learn/mpc-swing-explained/ , https://www.audeobox.com/learn/mpc-software/mpc-drum-programming/
-- Pheek, "Upgrading melodies with articulation" — https://audioservices.studio/blog/upgrading-melodies-with-articulation
-- Looping Guitar, "The tresillo and syncopation" — https://loopingguitar.com/en/learn/the-looping-curriculum/module-3/the-tresillo-and-syncopation/
-- Research on micro-timing: Matsushita & Nomura (bass/drum asynchrony ratings); Frontiers in Psychology 2017 "Timing is everything… or is it?"; Nature Sci. Rep. 2019 "Microtiming deviations and swing feel in jazz" — https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2017.01709/full , https://www.nature.com/articles/s41598-019-55981-3
+## Groovy, jackin', funk and disco
+- Noisegate, "Beat Breakdown: Classic Jackin' House" — https://noisegate.com.au/beat-breakdown-classic-jackin-house/
+- TalkingBass, "How To Build A Great Funky Bass Line" (and disco double-note octave lesson) — https://www.talkingbass.net/how-to-build-a-funky-bass-line/
+- StudyBass, "Chromatic Approach Notes" — https://www.studybass.com/lessons/common-bass-patterns/chromatic-approach-notes/
+- Looping Guitar, "The Tresillo and Syncopation" — https://loopingguitar.com/en/learn/the-looping-curriculum/module-3/the-tresillo-and-syncopation/
+- Songen, "How to add groove to any beat: swing, syncopation and ghost notes" — https://songen.app/blog/how-to-add-groove-to-any-beat/
+- Attack Magazine, "Low-End Theory: Exploring Eight Common Bassline Styles" — https://www.attackmagazine.com/technique/tutorials/low-end-theory-exploring-eight-common-bassline-styles/
+- MusicRadar, "How to create interesting rhythmic basslines in Ableton Live" (Audio to MIDI) — https://www.musicradar.com/how-to/create-basslines-ableton-live
+- KVR forum, "Ideas on programming disco and funk bass lines" (search excerpt only) — https://www.kvraudio.com/forum/viewtopic.php?t=323851
 
-## Subgenre guides
-- Beatkey, "How to make deep house" — https://beatkey.app/how-to-make-deep-house-music
-- Stealify, "Deep house bassline tutorial essentials" — https://stealifysounds.com/blogs/news/elevate-your-tracks-deep-house-bassline-tutorial-essentials
-- Lessons In Live, "Deep house groove in Ableton Live" — https://www.lessonsinlive.com/blog/how-to-make-a-house-groove-in-ableton-live/
-- Noisegate, "Beat breakdown: classic jackin' house" — https://noisegate.com.au/beat-breakdown-classic-jackin-house/
-- BandLab, "Jackin' house beat" — https://blog.bandlab.com/how-to-make-a-jackin-house-beat-on-bandlab/
-- Samplefocus, "Make tech house like Chris Lake" — https://blog.samplefocus.com/blog/make-tech-house-track-chris-lake/
-- Attack Magazine, "Warehouse-style rolling techno basslines" — https://www.attackmagazine.com/technique/tutorials/warehouse-rolling-techno-bass/
-- Studio Brootle, "Rolling techno bassline Ableton" — https://www.studiobrootle.com/rolling-techno-bassline-ableton/
-- Evosounds, "Rolling techno basslines that fit your kick" — https://www.evosounds.com/post/how-to-make-rolling-techno-basslines-that-fit-your-kick
-- Fazemag, "5 Tipps für fette Techno-Basslines"; Beat.de, "Techno-Basslines: Subs like Landry & Letyago"
-- Roland, "Beyond Acid: TB-303"; 303box acid guide; MusicRadar Fatboy Slim acid tutorial
-- KVR forum, "Programming disco and funk bass lines" — https://www.kvraudio.com/forum/viewtopic.php?t=323851
+## Techno and acid
+- Attack Magazine, "Sculpting Warehouse-Style Rolling Techno Basslines" — https://www.attackmagazine.com/technique/tutorials/warehouse-rolling-techno-bass/
+- Evo Sounds, "How to Make Rolling Techno Basslines That Fit Your Kick" (Zen World) — https://www.evosounds.com/post/how-to-make-rolling-techno-basslines-that-fit-your-kick
+- Studio Brootle, "Rolling Techno Bassline Ableton (delay rumble)" — https://www.studiobrootle.com/rolling-techno-bassline-ableton/
+- FAZEmag, "5 Tipps für fette Techno-Basslines" — https://www.fazemag.de/5-tipps-fuer-fette-techno-basslines/
+- Theory Helper, "Best Scales for Techno" — https://www.theoryhelper.com/genres/techno/scales
+- F9 Audio, "Using the Phrygian Scale with Tech House" — https://www.f9-audio.com/en-us/blogs/tutorials/do-you-know-this-trick-for-tech-melodic-house-melodies-phrygian-house
+- 303box, "Acid House Guide: 303 basslines, rhythm and movement" — https://303box.com/acid-house-guide.html
 
-## Artists' own words
-- Larry Heard on "Can You Feel It" (Juno-60 + TR-909) — https://www.vice.com/en/article/larry-heard-can-you-feel-it-making-of/
-- Kerri Chandler, RBMA lecture and interviews (bassline as the groove; tuning bass to the room; sub-octave kick) — https://www.redbullmusicacademy.com/lectures/kerri-chandler-a-basement-a-red-light-and-a-feeling/ , https://www.attackmagazine.com/features/interview/kerri-chandler/
+## Swing, groove and timing
+- Attack Magazine, "Jack Your Tracks With Swing" — https://www.attackmagazine.com/technique/tutorials/jack-your-tracks-with-swing/
+- Attack Magazine, "Passing Notes: DAW & Drum Machine Swing" — https://www.attackmagazine.com/technique/passing-notes/daw-drum-machine-swing/
+- Padwolf, "MPC Swing Explained" — https://padwolf.app/learn/mpc-swing-explained/
+- Research: Senn, Kilchenmann, Bechtold, Hoesl (2017), "Groove in drum patterns as a function of both rhythmic properties and listeners' attitudes" / "Timing is everything… or is it?", Frontiers in Psychology 8:1709 — https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2017.01709/full ; cites Butterfield (bass/drums shift up to 30 ms unnoticed) and Matsushita & Nomura (2016, Music Perception 34).
 
 ## Kick / bass and mixing
-- Myloops psytrance kick & bass guides (octave-up tuning, beating from cents offsets) — https://www.myloops.net/mixing-psytrance-kick-and-bass
-- Fix The Mix, "Kick and bass" — https://www.fixthemix.io/en/guides/kick-and-bass
-- Ben Rainey, "Sidechain compression for house music" — https://www.benrainey.co.uk/blog/sidechain-compression-house-music
-- Music Guy Mixing, "How to mix bass and kick" — https://www.musicguymixing.com/mix-bass-and-kick/
-- MusicRadar, "6 steps to a perfect layered bass sound"; Computer Music, Gorgon City layering
+- Myloops, "Mixing Psytrance Kick and Bass" (kick tuning method, octave-up rule, mono checks) — https://www.myloops.net/mixing-psytrance-kick-and-bass
+- Ben Rainey, "Sidechain Compression for House Music" (page returned a storefront; sidechain values taken from the other guides) — https://www.benrainey.co.uk/blog/sidechain-compression-house-music
 
 ## Ableton Live
-- Ableton Reference Manual 12: MIDI Tools, Using Grooves, MIDI Effect Reference (Note Length), Instrument Reference (Operator, Wavetable) — https://www.ableton.com/en/live-manual/12/midi-tools/ , https://www.ableton.com/en/manual/using-grooves/
-- Live 12 release notes — https://www.ableton.com/en/release-notes/live-12/
-- Attack Magazine, "Getting started with Live's generative MIDI tools" — https://www.attackmagazine.com/technique/tutorials/getting-started-with-ableton-lives-generative-midi-tools/
-- MusicRadar, "Create fresh basslines and melodies with Live 12's MIDI tools" — https://www.musicradar.com/tutorials/music-production-tutorials/stuck-for-ideas-heres-how-to-create-fresh-basslines-and-melodies-with-ableton-live-12s-midi-tools
-- Sound On Sound, "Ableton Live 12 MIDI generators" — https://www.soundonsound.com/techniques/ableton-live-12-midi-generators
-- EDMProd, Operator and Wavetable guides — https://www.edmprod.com/ableton-operator/ , https://www.edmprod.com/ableton-wavetable/
-- ADSR, "Creating swing grooves with Live's Arpeggiator" — https://www.adsrsounds.com/ableton-live-tutorials/creating-swing-grooves-with-ableton-lives-arpeggiator/
+- Ableton Reference Manual 12, ch. 11 "MIDI Tools" — https://www.ableton.com/en/live-manual/12/midi-tools/
+- Ableton Reference Manual 12, ch. 14 "Using Grooves" — https://www.ableton.com/en/manual/using-grooves/
+- Attack Magazine, "Getting Started With Ableton Live's Generative MIDI Tools" — https://www.attackmagazine.com/technique/tutorials/getting-started-with-ableton-lives-generative-midi-tools/
+- MusicRadar, "Create fresh basslines and melodies with Ableton Live 12's MIDI tools" (Tom Glendinning) — https://www.musicradar.com/tutorials/music-production-tutorials/stuck-for-ideas-heres-how-to-create-fresh-basslines-and-melodies-with-ableton-live-12s-midi-tools
+- Sound On Sound, "Ableton Live 12: MIDI Generators" (Oli Freke) — https://www.soundonsound.com/techniques/ableton-live-12-midi-generators
+- EDMProd, "Ableton Operator: The Complete Guide" — https://www.edmprod.com/ableton-operator/
